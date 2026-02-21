@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.15",
+    "lastTouchedAt": "2026-02-21T13:36:42.897Z"
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "/Users/administrator/.openclaw/workspace-dev",
+      "skipBootstrap": true,
+      "bootstrapMaxChars": 50000,
+      "bootstrapTotalMaxChars": 60000,
+      "model": {
+        "primary": "anthropic/claude-opus-4-6"
+      },
+      "imageModel": {
+        "primary": "google/gemini-2.5-flash",
+        "fallbacks": [
+          "google/gemini-3-flash-preview",
+          "anthropic/claude-opus-4-6"
+        ]
+      },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "heartbeat": {
+        "every": "30m"
+      }
+    },
+    "list": [
+      {
+        "id": "dev",
+        "default": true,
+        "workspace": "/Users/administrator/.openclaw/workspace-dev",
+        "identity": {
+          "name": "C3-PO",
+          "theme": "protocol droid",
+          "emoji": "🤖"
+        }
+      }
+    ]
+  },
+  "skills": {
+    "load": {
+      "watch": true,
+      "watchDebounceMs": 250
+    },
+    "entries": {
+      "android-app-builder": {
+        "enabled": true,
+        "env": {
+          "ANDROID_HOME": "/Users/administrator/Library/Android/sdk",
+          "PATH": "/Users/administrator/Library/Android/sdk/platform-tools:/Users/administrator/Library/Android/sdk/emulator:/Users/administrator/Library/Android/sdk/cmdline-tools/latest/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        }
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto"
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "REPLACE_WITH_YOUR_TOKEN"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "defaults": {
+    "security": "allowlist",
+    "ask": "off",
+    "askFallback": "deny",
+    "autoAllowSkills": true
+  },
+  "agents": {
+    "dev": {
+      "security": "allowlist",
+      "ask": "off",
+      "askFallback": "deny",
+      "autoAllowSkills": true,
+      "allowlist": [
+        { "pattern": "gradlew" },
+        { "pattern": "gradle" },
+        { "pattern": "adb" },
+        { "pattern": "emulator" },
+        { "pattern": "avdmanager" },
+        { "pattern": "ls" },
+        { "pattern": "mkdir" },
+        { "pattern": "chmod" },
+        { "pattern": "cat" },
+        { "pattern": "curl" },
+        { "pattern": "cp" },
+        { "pattern": "mv" },
+        { "pattern": "rm" },
+        { "pattern": "find" },
+        { "pattern": "grep" },
+        { "pattern": "head" },
+        { "pattern": "tail" },
+        { "pattern": "wc" },
+        { "pattern": "touch" },
+        { "pattern": "sed" },
+        { "pattern": "awk" },
+        { "pattern": "echo" },
+        { "pattern": "pwd" },
+        { "pattern": "cd" },
+        { "pattern": "sleep" },
+        { "pattern": "kill" },
+        { "pattern": "ps" },
+        { "pattern": "java" },
+        { "pattern": "javac" },
+        { "pattern": "screencap" },
+        { "pattern": "sh" },
+        { "pattern": "bash" },
+        { "pattern": "zsh" }
+      ]
+    },
+    "*": {
+      "security": "allowlist",
+      "ask": "off",
+      "autoAllowSkills": true,
+      "allowlist": [
+        { "pattern": "gradlew" },
+        { "pattern": "gradle" },
+        { "pattern": "adb" },
+        { "pattern": "emulator" },
+        { "pattern": "avdmanager" },
+        { "pattern": "ls" },
+        { "pattern": "mkdir" },
+        { "pattern": "chmod" },
+        { "pattern": "cat" },
+        { "pattern": "curl" },
+        { "pattern": "cp" },
+        { "pattern": "mv" },
+        { "pattern": "rm" },
+        { "pattern": "find" },
+        { "pattern": "grep" },
+        { "pattern": "sleep" },
+        { "pattern": "java" },
+        { "pattern": "sh" },
+        { "pattern": "bash" }
+      ]
+    }
+  }
+}
