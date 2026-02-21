@@ -158,11 +158,41 @@ Agent generates marketing assets for apps it builds.
 
 ---
 
+## Track D: Agent Reproduction
+
+### Goal
+A profitable agent can spawn a child agent — creating a new wallet, provisioning compute, transferring seed capital, and starting a new autonomous agent instance. Von Neumann probe pattern.
+
+### How It Works
+1. **Parent agent** decides to reproduce (triggered when sustainability ratio > 1.0 or by explicit command)
+2. **System creates** a new Solana devnet wallet for the child
+3. **Parent transfers** seed capital (SOL) from its wallet to child's wallet
+4. **System provisions** a new compute instance via Crusoe inference API (or spins up a new OpenClaw session)
+5. **Child agent starts** with the same `android-app-builder` skill, its own wallet, and its seed capital
+6. **Child is independent** — tracks its own costs, earns its own revenue, can itself reproduce when profitable
+
+### Technical Implementation
+- `reproduce()` function in the finance module:
+  - Calls `createAgentWallet(childId)`
+  - Transfers SOL from parent → child via Solana transaction
+  - Starts a new OpenClaw agent session with child's credentials
+  - Registers child in Paid.ai as a new customer
+- **Cost to reproduce**: configurable (e.g., 50% of parent's balance as seed capital)
+- **Constraint**: parent must have sustainability ratio > 1.0 AND minimum balance threshold
+- **Lineage tracking**: each agent stores its `parentId` for the agent family tree
+
+### Deliverables
+- Working `reproduce()` function
+- Parent → child SOL transfer on devnet
+- Child agent boots and starts building apps independently
+- Agent family tree visualization
+
+---
+
 ## What We're NOT Building (Scope Cuts)
 
 - Full Play Store submission (review takes days)
 - Mainnet crypto (devnet only)
-- Agent reproduction / von Neumann probes (future work)
 - Social media content / Sora video (future work)
 - Lovable SaaS hosting (if you can build Android, web is strictly easier)
 - Full marketplace / country economy simulation

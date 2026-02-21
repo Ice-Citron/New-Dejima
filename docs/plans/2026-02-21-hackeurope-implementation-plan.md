@@ -1565,37 +1565,301 @@ Work with A1/A2 to:
 
 3. **Emit revenue signal on app completion**: When the agent completes Phase 7 (successful APK), emit a revenue signal to Paid.ai.
 
-#### Task B-7 (STRETCH): MiroAI visualization
+#### Task B-7: Agent Reproduction System
+
+**Files:**
+- Create: `/Users/administrator/Black Projects/Project Altiera/New-Dejima/finance/src/reproduce.ts`
+- Create: `/Users/administrator/Black Projects/Project Altiera/New-Dejima/finance/src/agent-registry.ts`
+
+**Step 1: Write agent registry**
+
+Create `src/agent-registry.ts`:
+```typescript
+import { AgentWallet, createAgentWallet } from "./wallet.js";
+
+export interface AgentRecord {
+  agentId: string;
+  parentId: string | null; // null = genesis agent
+  walletAddress: string;
+  secretKeyBase58: string;
+  model: string;
+  status: "alive" | "dead" | "reproducing";
+  generation: number; // 0 = genesis, 1 = first child, etc.
+  createdAt: string;
+  totalCostUsd: number;
+  totalRevenueUsd: number;
+}
+
+// In-memory registry (persist to JSON file for demo)
+const registry: Map<string, AgentRecord> = new Map();
+
+export function registerAgent(
+  agentId: string,
+  wallet: AgentWallet,
+  model: string,
+  parentId: string | null = null,
+  generation: number = 0
+): AgentRecord {
+  const record: AgentRecord = {
+    agentId,
+    parentId,
+    walletAddress: wallet.publicKey,
+    secretKeyBase58: wallet.secretKeyBase58,
+    model,
+    status: "alive",
+    generation,
+    createdAt: new Date().toISOString(),
+    totalCostUsd: 0,
+    totalRevenueUsd: 0,
+  };
+  registry.set(agentId, record);
+  return record;
+}
+
+export function getAgent(agentId: string): AgentRecord | undefined {
+  return registry.get(agentId);
+}
+
+export function getAllAgents(): AgentRecord[] {
+  return Array.from(registry.values());
+}
+
+export function getLineage(agentId: string): AgentRecord[] {
+  const lineage: AgentRecord[] = [];
+  let current = registry.get(agentId);
+  while (current) {
+    lineage.unshift(current);
+    current = current.parentId ? registry.get(current.parentId) : undefined;
+  }
+  return lineage;
+}
+
+export function getChildren(agentId: string): AgentRecord[] {
+  return Array.from(registry.values()).filter(a => a.parentId === agentId);
+}
+
+export function formatFamilyTree(rootId: string, indent: number = 0): string {
+  const agent = registry.get(rootId);
+  if (!agent) return "";
+  const prefix = "  ".repeat(indent);
+  const status = agent.status === "alive" ? "ALIVE" : "DEAD";
+  let tree = `${prefix}[Gen ${agent.generation}] ${agent.agentId} (${status}) wallet:${agent.walletAddress.slice(0, 8)}...\n`;
+  const children = getChildren(rootId);
+  for (const child of children) {
+    tree += formatFamilyTree(child.agentId, indent + 1);
+  }
+  return tree;
+}
+```
+
+**Step 2: Write reproduction module**
+
+Create `src/reproduce.ts`:
+```typescript
+import { Connection, Keypair, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL, sendAndConfirmTransaction } from "@solana/web3.js";
+import * as bs58 from "bs58";
+import { createAgentWallet, getBalance, loadWallet } from "./wallet.js";
+import { registerAgent, getAgent, AgentRecord } from "./agent-registry.js";
+import { trackCost } from "./cost-tracker.js";
+
+const DEVNET_URL = "https://api.devnet.solana.com";
+
+// Minimum sustainability ratio required to reproduce
+const MIN_SUSTAINABILITY_RATIO = 1.0;
+// Fraction of parent's balance to give as seed capital
+const SEED_CAPITAL_FRACTION = 0.5;
+// Minimum SOL balance to reproduce
+const MIN_BALANCE_TO_REPRODUCE = 0.5;
+
+export interface ReproductionResult {
+  success: boolean;
+  childId?: string;
+  childWallet?: string;
+  seedCapitalSol?: number;
+  transferTx?: string;
+  error?: string;
+}
+
+export async function canReproduce(parentId: string): Promise<{ allowed: boolean; reason: string }> {
+  const parent = getAgent(parentId);
+  if (!parent) return { allowed: false, reason: "Parent agent not found" };
+  if (parent.status !== "alive") return { allowed: false, reason: "Parent agent is not alive" };
+
+  const balance = await getBalance(parent.walletAddress);
+  if (balance < MIN_BALANCE_TO_REPRODUCE) {
+    return { allowed: false, reason: `Insufficient balance: ${balance.toFixed(4)} SOL (need ${MIN_BALANCE_TO_REPRODUCE})` };
+  }
+
+  const ratio = parent.totalRevenueUsd > 0 && parent.totalCostUsd > 0
+    ? parent.totalRevenueUsd / parent.totalCostUsd
+    : 0;
+
+  // For demo purposes, allow reproduction even without profitability
+  // In production, enforce: if (ratio < MIN_SUSTAINABILITY_RATIO) ...
+  return { allowed: true, reason: `Balance: ${balance.toFixed(4)} SOL, ratio: ${ratio.toFixed(2)}x` };
+}
+
+export async function reproduce(parentId: string): Promise<ReproductionResult> {
+  const check = await canReproduce(parentId);
+  if (!check.allowed) {
+    return { success: false, error: check.reason };
+  }
+
+  const parent = getAgent(parentId)!;
+  const parentBalance = await getBalance(parent.walletAddress);
+  const seedCapital = parentBalance * SEED_CAPITAL_FRACTION;
+
+  // 1. Create child wallet
+  const childId = `${parentId}-child-${Date.now().toString(36)}`;
+  const childWallet = createAgentWallet(childId);
+
+  // 2. Transfer seed capital from parent to child
+  const connection = new Connection(DEVNET_URL, "confirmed");
+  const parentKeypair = loadWallet(parent.secretKeyBase58);
+
+  const tx = new Transaction().add(
+    SystemProgram.transfer({
+      fromPubkey: parentKeypair.publicKey,
+      toPubkey: new PublicKey(childWallet.publicKey),
+      lamports: Math.floor(seedCapital * LAMPORTS_PER_SOL),
+    })
+  );
+
+  const transferTx = await sendAndConfirmTransaction(connection, tx, [parentKeypair]);
+
+  // 3. Register child in registry
+  const childRecord = registerAgent(
+    childId,
+    childWallet,
+    parent.model,
+    parentId,
+    parent.generation + 1
+  );
+
+  // 4. Track reproduction cost
+  await trackCost({
+    agentId: parentId,
+    model: parent.model,
+    inputTokens: 0,
+    outputTokens: 0,
+    estimatedCostUsd: seedCapital * 150, // approximate SOL→USD at ~$150/SOL
+    timestamp: new Date().toISOString(),
+  });
+
+  console.log(`\n=== AGENT REPRODUCTION ===`);
+  console.log(`Parent: ${parentId} (Gen ${parent.generation})`);
+  console.log(`Child:  ${childId} (Gen ${childRecord.generation})`);
+  console.log(`Seed:   ${seedCapital.toFixed(4)} SOL`);
+  console.log(`TX:     ${transferTx}`);
+  console.log(`=========================\n`);
+
+  return {
+    success: true,
+    childId,
+    childWallet: childWallet.publicKey,
+    seedCapitalSol: seedCapital,
+    transferTx,
+  };
+}
+```
+
+**Step 3: Write reproduction test**
+
+Create `src/test-reproduce.ts`:
+```typescript
+import { createAgentWallet, airdropDevnetSol, getBalance } from "./wallet.js";
+import { registerAgent, formatFamilyTree, getAllAgents } from "./agent-registry.js";
+import { reproduce } from "./reproduce.js";
+
+async function main() {
+  // Create genesis agent
+  console.log("=== Creating Genesis Agent ===");
+  const genesisWallet = createAgentWallet("genesis-001");
+  registerAgent("genesis-001", genesisWallet, "claude-opus-4-6", null, 0);
+
+  // Fund genesis agent
+  console.log("Airdropping 2 SOL to genesis...");
+  await airdropDevnetSol(genesisWallet.publicKey, 2);
+  const balance = await getBalance(genesisWallet.publicKey);
+  console.log(`Genesis balance: ${balance} SOL`);
+
+  // Genesis reproduces
+  console.log("\n=== Genesis Reproducing ===");
+  const result1 = await reproduce("genesis-001");
+  if (!result1.success) {
+    console.error("Reproduction failed:", result1.error);
+    return;
+  }
+  console.log("Child created:", result1.childId);
+  console.log("Child wallet:", result1.childWallet);
+  console.log("Seed capital:", result1.seedCapitalSol, "SOL");
+
+  // Check balances
+  const genesisBalance = await getBalance(genesisWallet.publicKey);
+  const childBalance = await getBalance(result1.childWallet!);
+  console.log(`\nGenesis balance: ${genesisBalance.toFixed(4)} SOL`);
+  console.log(`Child balance:   ${childBalance.toFixed(4)} SOL`);
+
+  // Child reproduces (generation 2)
+  console.log("\n=== Child Reproducing (Gen 2) ===");
+  const result2 = await reproduce(result1.childId!);
+  if (result2.success) {
+    console.log("Grandchild created:", result2.childId);
+  }
+
+  // Print family tree
+  console.log("\n=== Agent Family Tree ===");
+  console.log(formatFamilyTree("genesis-001"));
+
+  // Print all agents
+  console.log("=== All Agents ===");
+  for (const agent of getAllAgents()) {
+    const bal = await getBalance(agent.walletAddress);
+    console.log(`  ${agent.agentId} | Gen ${agent.generation} | ${bal.toFixed(4)} SOL | ${agent.status}`);
+  }
+}
+
+main().catch(console.error);
+```
+
+Run:
+```bash
+npx tsx src/test-reproduce.ts
+```
+
+Expected: Genesis creates child, child creates grandchild. Family tree shows 3 generations. SOL balances split correctly across wallets.
+
+---
+
+#### Task B-8 (STRETCH): MiroAI visualization
 
 **Step 1: Add Miro MCP server**
 
 ```bash
-# In Claude Code
 claude mcp add --transport http miro https://mcp.miro.com
 ```
 
-**Step 2: Create a board showing agent architecture**
+**Step 2: Create a board showing agent family tree + economics**
 
-Use the Miro MCP tools to:
-- Create a diagram showing the New Dejima system architecture
-- Create a table showing agent economics data
-- Create a doc summarizing the pipeline
+Use the Miro MCP tools to visualize the agent lineage and economics data.
 
 ---
 
 ### Hour 15-18 (3:45 AM - 6:45 AM): Polish + Demo Prep
 
-#### Task B-8: Final economics demo
+#### Task B-9: Final economics + reproduction demo
 
 Create a comprehensive demo script that:
 
-1. Creates a new agent with wallet
+1. Creates a genesis agent with wallet
 2. Airdrops SOL
 3. Shows the agent building an app (Track A)
 4. Tracks all costs in real-time (Paid.ai)
 5. Simulates revenue from app downloads
 6. Prints the sustainability ratio
 7. Shows the Stripe virtual card spending
+8. **Agent reproduces when profitable** — child gets its own wallet + seed capital
+9. Prints the family tree
 
 Create `src/demo.ts` that orchestrates all of the above.
 
@@ -1620,8 +1884,9 @@ Key slides:
 3. **The Demo**: Agent autonomously builds Android app (video/screenshots)
 4. **The Economics**: Paid.ai dashboard, sustainability ratio
 5. **The Wallet**: Solana devnet wallet with balance
-6. **Future Vision**: "The hardest part is done. Trading, SaaS, real estate — just more tool calls."
-7. **Sponsor Integrations**: Anthropic (brain), DeepMind (vision), Paid.ai (economics), Solana (wallet), Stripe (payments), Crusoe (compute)
+6. **Reproduction**: Agent spawns child agent, transfers SOL, child starts building — family tree visualization
+7. **Future Vision**: "The hardest part is done. Trading, SaaS, real estate — just more tool calls."
+8. **Sponsor Integrations**: Anthropic (brain), DeepMind (vision), Paid.ai (economics), Solana (wallet), Stripe (payments), Crusoe (compute)
 
 ### Hour 20-21 (8:45 AM - 10:45 AM): Rehearse + Buffer
 
@@ -1647,8 +1912,8 @@ Hour  9: Demo recording (A1+A2) + Economics test (B)      ← CHECKPOINT: Does i
 Hour 10: Polish pipeline (A1+A2) + Integration (B)
 Hour 11: Integration meeting (ALL)
 Hour 12: Cross-track testing (ALL)
-Hour 13: Stress testing (A1+A2) + MiroAI stretch (B)
-Hour 14: Marketing stretch (A1+A2) + Final economics (B)
+Hour 13: Stress testing (A1+A2) + Agent reproduction system (B)
+Hour 14: Marketing stretch (A1+A2) + Reproduction test + family tree demo (B)
 Hour 15-17: Polish + fix remaining issues (ALL)
 Hour 18-19: Collate demo artifacts (ALL)
 Hour 19-20: Build presentation (ALL)
