@@ -1,0 +1,15 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "C:\\Users\\nahom\\AppData\\Local\\Temp\\dejima-workspace",
+      "model": { "primary": "anthropic/claude-opus-4-6" },
+      "imageModel": { "primary": "google/gemini-2.0-flash" }
+    }
+  },
+  "skills": {
+    "entries": {
+      "android-app-builder": { "enabled": true }
+    }
+  },
+  "gateway": { "port": 18789, "mode": "local" }
+}

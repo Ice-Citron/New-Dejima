@@ -1,0 +1,10 @@
+{
+  "id": "android-dev",
+  "name": "Android Dev",
+  "description": "Autonomous Android app development tools for the New Dejima pipeline",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

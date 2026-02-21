@@ -1,0 +1,15 @@
+{
+  "name": "@openclaw/android-dev",
+  "version": "0.1.0",
+  "description": "Android development tools for autonomous app building",
+  "type": "module",
+  "main": "./index.js",
+  "devDependencies": {
+    "openclaw": "workspace:*"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
