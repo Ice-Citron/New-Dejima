@@ -1,3 +1,8 @@
+# API Keys (NEVER commit)
+.api-keys
+.env
+*.env.local
+
 # MacOS Security Files
 .DS_Store
 

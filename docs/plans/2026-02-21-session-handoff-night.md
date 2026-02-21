@@ -148,13 +148,18 @@ JAVA_HOME = /Users/administrator/Library/Java/JavaVirtualMachines/corretto-17.0.
 | Implementation plan | `/Users/administrator/Black Projects/Project Altiera/docs/plans/2026-02-21-hackeurope-implementation-plan.md` |
 | Design doc | `/Users/administrator/Black Projects/Project Altiera/docs/plans/2026-02-21-hackeurope-new-dejima-design.md` |
 
-### API Keys (in .env file, also need to be exported in shell)
+### API Keys
 
-```bash
-# Check .env file at: /Users/administrator/Black Projects/Project Altiera/openclaw/.env
-# Contains: ANTHROPIC_API_KEY, GEMINI_API_KEY, GOOGLE_AI_API_KEY
-# NEVER write actual keys in plan/handoff files — they get pushed to git
-```
+**Keys are stored in TWO hidden files (both gitignored, NEVER commit):**
+1. `/Users/administrator/Black Projects/Project Altiera/openclaw/.env` — All keys, used by OpenClaw gateway
+2. `/Users/administrator/Black Projects/Project Altiera/New-Dejima/.api-keys` — Reference copy with dashboards/notes
+
+**Available APIs (20+ keys configured):**
+Anthropic, Gemini, Finnhub, CoinGecko, ExchangeRate-API, Currents API, DeepL, Groq, NASA, Pexels, Unsplash, Spotify, MapBox, Spoonacular, CalorieNinjas, WolframAlpha, OpenWeather, Firebase
+
+**No-key APIs:** Open-Meteo, OpenTriviaDB, REST Countries, CoinGecko public endpoint
+
+**NOTE on WolframAlpha:** User may have swapped the Short Answers and Simple API app IDs. Test both and switch if needed.
 
 ### How to Start OpenClaw Gateway
 
