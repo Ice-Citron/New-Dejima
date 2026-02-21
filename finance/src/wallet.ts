@@ -2,10 +2,9 @@ import { Connection, Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.j
 import bs58 from "bs58";
 
 const DEVNET_URL = "https://api.devnet.solana.com";
-const DEVNET_RPC_FALLBACKS = [
-  "https://api.devnet.solana.com",
-  "https://devnet.helius-rpc.com/?api-key=demo",
-];
+
+// Treasury wallet agent ID — stable across all runs via wallet-store
+export const TREASURY_AGENT_ID = "new-dejima-treasury";
 
 export interface AgentWallet {
   publicKey: string;
@@ -35,19 +34,12 @@ export async function getBalance(publicKey: string): Promise<number> {
 }
 
 export async function airdropDevnetSol(publicKey: string, amount: number = 1): Promise<string> {
-  for (const rpc of DEVNET_RPC_FALLBACKS) {
-    try {
-      const connection = new Connection(rpc, "confirmed");
-      const sig = await connection.requestAirdrop(
-        new PublicKey(publicKey),
-        amount * LAMPORTS_PER_SOL
-      );
-      const latestBlockhash = await connection.getLatestBlockhash();
-      await connection.confirmTransaction({ signature: sig, ...latestBlockhash });
-      return sig;
-    } catch (err) {
-      console.warn(`Airdrop via ${rpc} failed, trying next...`);
-    }
-  }
-  throw new Error("All airdrop RPC endpoints failed — try https://faucet.solana.com manually");
+  const connection = new Connection(DEVNET_URL, "confirmed");
+  const sig = await connection.requestAirdrop(
+    new PublicKey(publicKey),
+    amount * LAMPORTS_PER_SOL
+  );
+  const latestBlockhash = await connection.getLatestBlockhash();
+  await connection.confirmTransaction({ signature: sig, ...latestBlockhash });
+  return sig;
 }
