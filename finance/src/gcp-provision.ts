@@ -18,12 +18,13 @@ dotenv.config();
 const PROJECT = process.env.GCP_PROJECT ?? "project-2c418787-8ea4-496d-a91";
 
 // GPU candidates tried in order — first available wins
+// L4 first: T4s are chronically exhausted in us-central1
 const GPU_CANDIDATES = [
+  { zone: "us-central1-a", machineType: "g2-standard-4", gpuType: "nvidia-l4",        pricePerHour: 0.92 },
+  { zone: "us-central1-b", machineType: "g2-standard-4", gpuType: "nvidia-l4",        pricePerHour: 0.92 },
   { zone: "us-central1-b", machineType: "n1-standard-4", gpuType: "nvidia-tesla-t4", pricePerHour: 0.54 },
   { zone: "us-central1-c", machineType: "n1-standard-4", gpuType: "nvidia-tesla-t4", pricePerHour: 0.54 },
   { zone: "us-central1-f", machineType: "n1-standard-4", gpuType: "nvidia-tesla-t4", pricePerHour: 0.54 },
-  { zone: "us-central1-a", machineType: "g2-standard-4", gpuType: "nvidia-l4",        pricePerHour: 0.92 },
-  { zone: "us-central1-b", machineType: "g2-standard-4", gpuType: "nvidia-l4",        pricePerHour: 0.92 },
   { zone: "us-east1-c",    machineType: "n1-standard-4", gpuType: "nvidia-tesla-t4", pricePerHour: 0.54 },
 ];
 // Deep Learning VM: CUDA 12.8 + NVIDIA 570 driver pre-installed (Ubuntu 22.04)
@@ -145,7 +146,7 @@ async function createInstance(
     `--maintenance-policy=TERMINATE`,
     `--metadata-from-file=startup-script=${scriptPath}`,
     `--scopes=default`,
-  ].join(" "), 120_000, zone);
+  ].join(" "), 180_000, zone);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
