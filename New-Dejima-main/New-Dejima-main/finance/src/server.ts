@@ -1,5 +1,7 @@
 import express from "express";
 import { readFileSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import { loadEvents, addEvent, getEvents, getAgentSummaries } from "./event-store.js";
 import {
   trackCost,
@@ -320,16 +322,27 @@ app.get("/api/stats/timeline", (_req, res) => {
   res.json(timeline);
 });
 
-// ── GET / — serve dashboard HTML ──
-app.get("/", (_req, res) => {
+// ── Static assets & SPA routing ──
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const PUBLIC_DIR = join(__dirname, "../public");
+
+// Serve static assets from the public folder (built webapp)
+app.use(express.static(PUBLIC_DIR));
+
+// ── GET / — serve dashboard built app ──
+app.get(/.*/, (req, res, next) => {
+  // If it's an API request, let it fall through to next handlers
+  if (req.path.startsWith("/api")) {
+    return next();
+  }
+
+  // Otherwise serve index.html for SPA routing
   try {
-    const html = readFileSync(
-      decodeURIComponent(new URL("./dashboard.html", import.meta.url).pathname),
-      "utf-8"
-    );
+    const html = readFileSync(join(PUBLIC_DIR, "index.html"), "utf-8");
     res.type("html").send(html);
   } catch {
-    res.type("html").send("<h1>Dashboard not found — create finance/src/dashboard.html</h1>");
+    res.type("html").send("<h1>Dashboard not found — run 'pnpm build' in webapp and copy dist to finance/public</h1>");
   }
 });
 

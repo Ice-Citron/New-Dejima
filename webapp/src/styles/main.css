@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ─── Theme Tokens ─── */
+:root {
+  --color-bg: #f9f9f8;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #f2f2f0;
+  --color-text: #1a1918;
+  --color-text-secondary: #56514c;
+  --color-text-muted: #9c9188;
+  --color-border: #e5e3e0;
+  --color-border-strong: #cbc8c4;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-subtle: #eff6ff;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --sidebar-width: 240px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.dark {
+  --color-bg: #0e0d0c;
+  --color-bg-elevated: #181614;
+  --color-bg-subtle: #1f1d1b;
+  --color-text: #f5f3f0;
+  --color-text-secondary: #a8a09a;
+  --color-text-muted: #6b6460;
+  --color-border: #2c2825;
+  --color-border-strong: #3d3a36;
+  --color-accent: #4f8ef7;
+  --color-accent-hover: #6ba3f9;
+  --color-accent-subtle: rgba(79, 142, 247, 0.12);
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ─── Page Transitions ─── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-3px);
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Focus ─── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ─── Activity icon bg colors (dark-safe) ─── */
+.icon-blue   { background: rgba(59,130,246,0.12); color: #60a5fa; }
+.icon-violet { background: rgba(139,92,246,0.12); color: #a78bfa; }
+.icon-emerald{ background: rgba(34,197,94,0.12);  color: #4ade80; }
+.icon-red    { background: rgba(239,68,68,0.12);  color: #f87171; }
+.icon-amber  { background: rgba(245,158,11,0.12); color: #fbbf24; }
+.icon-stat-blue   { background: rgba(59,130,246,0.12); color: #60a5fa; }
+.icon-stat-red    { background: rgba(239,68,68,0.12);  color: #f87171; }
+.icon-stat-emerald{ background: rgba(34,197,94,0.12);  color: #4ade80; }
+.icon-stat-violet { background: rgba(139,92,246,0.12); color: #a78bfa; }

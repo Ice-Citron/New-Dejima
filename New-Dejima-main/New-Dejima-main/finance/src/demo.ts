@@ -15,6 +15,7 @@ import { airdropDevnetSol, getBalance, TREASURY_AGENT_ID } from "./wallet.js";
 import { getOrCreateWallet } from "./wallet-store.js";
 import { registerAgent, updateAgentEconomics, formatFamilyTree } from "./agent-registry.js";
 import { trackCost, trackRevenue } from "./cost-tracker.js";
+import { addEvent } from "./event-store.js";
 import { getAgentEconomics, formatEconomicsReport, calculateTokenCost } from "./agent-economics.js";
 import { agentReproductionPipeline } from "./payment-pipeline.js";
 import { destroyVastInstance, closeSSHTunnel } from "./vast-provision.js";
@@ -39,7 +40,7 @@ async function cleanup() {
   }
 }
 
-process.on("SIGINT",  async () => { await cleanup(); process.exit(0); });
+process.on("SIGINT", async () => { await cleanup(); process.exit(0); });
 process.on("SIGTERM", async () => { await cleanup(); process.exit(0); });
 
 async function main() {
@@ -90,12 +91,24 @@ async function main() {
     estimatedCostUsd: costUsd,
     timestamp: new Date().toISOString(),
   });
+  addEvent({
+    type: "cost",
+    agentId: "genesis-001",
+    timestamp: new Date().toISOString(),
+    data: { model: "claude-opus-4-6", inputTokens, outputTokens, costUsd }
+  });
   await trackRevenue({
     agentId: "genesis-001",
     source: "android_app",
     amountUsd: revenueUsd,
     description: "Tip Calculator — 1 download",
     timestamp: new Date().toISOString(),
+  });
+  addEvent({
+    type: "revenue",
+    agentId: "genesis-001",
+    timestamp: new Date().toISOString(),
+    data: { source: "android_app", amountUsd: revenueUsd, description: "Tip Calculator — 1 download" }
   });
   updateAgentEconomics("genesis-001", costUsd, revenueUsd);
 
