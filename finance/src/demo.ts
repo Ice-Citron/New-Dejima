@@ -146,10 +146,10 @@ async function main() {
 
     // Track instance for cleanup
     if (result.success) {
-      if (PROVIDER === "vast" && result.vast?.instanceId) {
-        vastInstanceId = result.vast.instanceId as number;
-      } else if (PROVIDER === "gcp" && (result.vast as any)?.instanceName) {
-        gcpInstanceName = (result.vast as any).instanceName;
+      if (PROVIDER === "vast" && "instanceId" in result.vast) {
+        vastInstanceId = (result.vast as import("./vast-provision.js").VastInstance).instanceId as number;
+      } else if (PROVIDER === "gcp" && "instanceName" in result.vast) {
+        gcpInstanceName = (result.vast as import("./gcp-provision.js").GcpInstance).instanceName;
       }
     }
 

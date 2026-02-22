@@ -85,7 +85,7 @@ export interface PipelineResult {
   kyc: KycResult;
   conversion: ConversionResult;
   stripe: StripeCharge;
-  vast: VastInstance;
+  vast: VastInstance | GcpInstance;
   server: ServerConfig;
   handoff: HandoffResult;
   error?: string;
@@ -307,9 +307,10 @@ export async function agentReproductionPipeline(params: {
   console.log(`[5/7] GPU VM PROVISIONED (${provider.toUpperCase()})`);
   console.log(`  Model:    ${model}`);
   const vast = await provisionGpu(model, provider);
-  console.log(`  GPU:      ${vast.gpuName}`);
-  console.log(`  Instance: ${vast.instanceId}`);
-  console.log(`  SSH:      ${vast.sshHost}:${vast.sshPort}`);
+  const isGcp = "instanceName" in vast;
+  console.log(`  GPU:      ${isGcp ? (vast as GcpInstance).gpuType      : (vast as VastInstance).gpuName}`);
+  console.log(`  Instance: ${isGcp ? (vast as GcpInstance).instanceName : String((vast as VastInstance).instanceId)}`);
+  console.log(`  Host:     ${isGcp ? (vast as GcpInstance).externalIp   : `${(vast as VastInstance).sshHost}:${(vast as VastInstance).sshPort}`}`);
   console.log(`  Price:    $${vast.pricePerHour.toFixed(3)}/hr`);
   console.log(`  Status:   ${vast.status}\n`);
 
