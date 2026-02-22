@@ -1,0 +1,14 @@
+{
+  "genesis-001": {
+    "publicKey": "FDsEcB66kuBFYjL5suVDQ9TM4xkp6UkqoU61cDmm8ryL",
+    "secretKeyBase58": "4VbKq14KnDvMu5BbWVmhXjqLSjhbyHkS6R7UvRE5vJFbKqRyKHfskZUvC3YFLtUK9nQkDahCSGCZkb3r5h2jsznz",
+    "createdAt": "2026-02-22T07:07:06.874Z",
+    "agentId": "genesis-001"
+  },
+  "new-dejima-treasury": {
+    "publicKey": "EiByjZnbd5f3tvQuRPDN6BFt4sz3fpcf3bZSWfNCM7iJ",
+    "secretKeyBase58": "weEHcvSknQw2ovSbSd47zrVK4Ti8yYGP8yd5AMKRJ9d3ybZtj7AKiRNCDhJTDCnnkqtQ82qGDJqgdQvhkHr8x3C",
+    "createdAt": "2026-02-22T07:07:06.878Z",
+    "agentId": "new-dejima-treasury"
+  }
+}

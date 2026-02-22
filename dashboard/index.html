@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Dejima — Agent Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="brand">
+          <span class="brand-icon">&#x1F3EF;</span>
+          <div>
+            <div class="brand-title">NEW DEJIMA</div>
+            <div class="brand-sub">Agent Economics Dashboard</div>
+          </div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="pill" id="status-pill">
+          <span class="dot dot--yellow"></span>
+          <span>Connecting...</span>
+        </div>
+        <div class="pill" id="wallet-pill">
+          <span class="dot dot--yellow"></span>
+          <span>Wallet: Pending Integration</span>
+        </div>
+        <button class="btn btn--refresh" onclick="refreshDashboard()">Refresh</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Summary Row -->
+      <section class="summary-row" id="summary-row"></section>
+
+      <!-- Agent Grid -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Agent Fleet</h2>
+          <span class="section-sub" id="agent-count"></span>
+        </div>
+        <div class="agent-grid" id="agent-grid"></div>
+      </section>
+
+      <!-- Daily Cost Chart -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Daily Cost (14d)</h2>
+          <span class="badge badge--live" id="daily-badge">Live</span>
+        </div>
+        <div class="daily-chart-wrap" id="daily-chart"></div>
+      </section>
+
+      <!-- Production Log -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Production Log</h2>
+          <span class="section-sub">Apps and stores produced by agents</span>
+        </div>
+        <div class="table-wrap">
+          <table class="table" id="production-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Agent</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Size</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="production-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Cost Breakdown by Agent -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Cost by Agent (30d)</h2>
+          <span class="badge badge--live" id="cost-badge">Live</span>
+        </div>
+        <div class="cost-chart" id="cost-chart"></div>
+      </section>
+
+      <!-- Wallet Integration Stub -->
+      <section class="section wallet-section" id="wallet-section">
+        <div class="section-header">
+          <h2 class="section-title">Treasury &amp; Wallets</h2>
+          <span class="badge badge--pending">Pending Integration</span>
+        </div>
+        <div class="wallet-placeholder">
+          <div class="wallet-icon">&#x1F4B0;</div>
+          <p class="wallet-text">Crypto wallet integration is under development.</p>
+          <p class="wallet-sub">Once ready, each agent will have its own wallet address for autonomous revenue collection and cost settlement.</p>
+          <div class="wallet-preview" id="wallet-preview"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>New Dejima &mdash; Autonomous Agent Economy</span>
+      <span class="footer-meta">
+        <span class="badge badge--live badge--sm">Live</span> = real-time from gateway &nbsp;&middot;&nbsp;
+        <span class="badge badge--simulated badge--sm">Simulated</span> = estimate (replaced once integration complete)
+      </span>
+    </footer>
+  </div>
+  <script src="gateway.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

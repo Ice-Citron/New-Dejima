@@ -1,0 +1,187 @@
+{
+  "top_ideas": [
+    {
+      "rank": 1,
+      "name": "GolfDeals",
+      "group": "Golf Equipment",
+      "reasoning": "Clear, specific problem with proven market demand. Golf is a $84B industry with dedicated equipment buyers. Mobile-first use case for on-the-go price checking.",
+      "validation_steps": {
+        "subreddits": [
+          "r/golf",
+          "r/golfdeals",
+          "r/golfers"
+        ],
+        "questions": [
+          "How much do you spend on golf balls per year?",
+          "Do you compare prices before buying golf balls?",
+          "What's your biggest frustration with finding golf equipment deals?"
+        ]
+      },
+      "mvp_scope": "Price comparison for golf balls across 3-5 major retailers (Amazon, Dick's, Golf Galaxy) with basic deal alerts and price per ball calculations",
+      "differentiator": "First app focused specifically on per-unit golf ball pricing rather than package deals, with course difficulty integration for smart recommendations"
+    },
+    {
+      "rank": 2,
+      "name": "TimeReality",
+      "group": "ADHD Planning",
+      "reasoning": "Underserved ADHD market (10M+ adults) willing to pay for effective tools. Strong personal validation from creator who built and uses it daily.",
+      "validation_steps": {
+        "subreddits": [
+          "r/ADHD",
+          "r/ADHDmemes",
+          "r/productivity"
+        ],
+        "questions": [
+          "How do you currently plan your day?",
+          "What's your biggest time management challenge?",
+          "Would you pay for an app that helps with time-blindness?"
+        ]
+      },
+      "mvp_scope": "Visual 24-hour timeline with drag-and-drop task scheduling, basic time estimation learning, and buffer time suggestions",
+      "differentiator": "First planning app designed specifically for ADHD time-blindness with visual time blocks and realistic scheduling algorithms"
+    },
+    {
+      "rank": 3,
+      "name": "QuickHome",
+      "group": "Smart Home",
+      "reasoning": "Clear mobile use case for smart home power users frustrated with slow native apps. Growing HomeKit market with users willing to pay for better UX.",
+      "validation_steps": {
+        "subreddits": [
+          "r/HomeKit",
+          "r/smarthome",
+          "r/homeautomation"
+        ],
+        "questions": [
+          "How many HomeKit devices do you have?",
+          "What frustrates you about the Home app?",
+          "Would you pay for a faster HomeKit controller?"
+        ]
+      },
+      "mvp_scope": "Fast HomeKit device control with customizable shortcuts, home screen widgets, and favorite device quick access",
+      "differentiator": "Ultra-fast loading optimized specifically for power users with 50+ devices, focusing on speed over features"
+    },
+    {
+      "rank": 4,
+      "name": "DevVault",
+      "group": "Developer Tools",
+      "reasoning": "Real pain point for DevOps professionals with sensitive data. Niche but dedicated audience willing to pay for security-focused solutions.",
+      "validation_steps": {
+        "subreddits": [
+          "r/devops",
+          "r/sysadmin",
+          "r/selfhosted"
+        ],
+        "questions": [
+          "How do you currently store SSH keys and server IPs?",
+          "What security concerns do you have with current solutions?",
+          "Do you need mobile access to operational data?"
+        ]
+      },
+      "mvp_scope": "Secure storage with biometric unlock, quick search/copy, basic categorization (servers, credentials, commands), and local encryption",
+      "differentiator": "Mobile-first design optimized for DevOps workflows with one-tap copying and offline-first architecture"
+    },
+    {
+      "rank": 5,
+      "name": "AgentFlow",
+      "group": "AI Orchestration",
+      "reasoning": "Emerging market in multi-agent AI systems. Mobile monitoring valuable for long-running tasks. Technical complexity is high but addressable.",
+      "validation_steps": {
+        "subreddits": [
+          "r/MachineLearning",
+          "r/artificial",
+          "r/LocalLLaMA"
+        ],
+        "questions": [
+          "Do you use multiple AI agents in workflows?",
+          "How do you currently monitor long-running AI tasks?",
+          "Would mobile notifications for AI task status be useful?"
+        ]
+      },
+      "mvp_scope": "Basic agent workflow monitoring with status updates, push notifications for task completion/failures, and simple task redirection",
+      "differentiator": "First mobile interface for multi-agent AI orchestration with real-time monitoring and intervention capabilities"
+    },
+    {
+      "rank": 6,
+      "name": "GuideMe",
+      "group": "User Assistance",
+      "reasoning": "Universal problem affecting many users learning new software. Mobile companion approach could work for non-technical users needing guidance.",
+      "validation_steps": {
+        "subreddits": [
+          "r/techsupport",
+          "r/excel",
+          "r/computers"
+        ],
+        "questions": [
+          "How do you learn new software?",
+          "Do you take screenshots when asking for help?",
+          "Would step-by-step phone guidance while using desktop be helpful?"
+        ]
+      },
+      "mvp_scope": "Screenshot upload with AI-powered step detection, basic visual annotations, and progress tracking through common software tasks",
+      "differentiator": "AI-powered screenshot analysis providing instant next-step guidance without leaving the mobile device"
+    },
+    {
+      "rank": 7,
+      "name": "VolumeGuard",
+      "group": "Audio Safety",
+      "reasoning": "Universal safety concern but technical implementation challenges. Limited by OS restrictions on system-wide audio control.",
+      "validation_steps": {
+        "subreddits": [
+          "r/hearing",
+          "r/tinnitus",
+          "r/accessibility"
+        ],
+        "questions": [
+          "Have you experienced sudden volume spikes on your phone?",
+          "What audio safety features would you want?",
+          "Would you pay for hearing protection software?"
+        ]
+      },
+      "mvp_scope": "Basic volume limiting for calls with emergency bypass, incident logging, and quick volume reset shortcuts",
+      "differentiator": "First dedicated audio safety app with call-specific volume controls and medical incident documentation"
+    }
+  ],
+  "themes": [
+    "Developer productivity tools (5 ideas) - DevOps storage, payment monitoring, framework benchmarking, VM management, code review tracking",
+    "ADHD/neurodivergent planning (2 ideas) - Visual time management and realistic scheduling",
+    "AI tooling and orchestration (3 ideas) - Agent marketplaces, multi-agent coordination, AI adoption tracking",
+    "User assistance and guidance (2 ideas) - Software learning and step-by-step instruction",
+    "Mobile companions for desktop workflows (4 ideas) - DevOps tools, development monitoring, VM management, code reviews",
+    "Safety and accessibility (1 idea) - Audio protection from volume spikes",
+    "Niche utility apps (3 ideas) - Golf equipment deals, 3D printing data storage, HomeKit control"
+  ],
+  "rejected": [
+    {
+      "name": "AI Reality Check",
+      "reason": "Opinion/analysis app without clear mobile use case. Better suited for research platforms than consumer apps."
+    },
+    {
+      "name": "AgentHub",
+      "reason": "B2B infrastructure problem better solved by web platforms. Very low engagement suggests minimal market interest."
+    },
+    {
+      "name": "DevStack Builder",
+      "reason": "Developers prefer desktop/web for complex workflows. Mobile isn't suitable for scaffolding and infrastructure management."
+    },
+    {
+      "name": "PaySync Mobile",
+      "reason": "Core problem (webhook complexity) solved by backend libraries, not mobile apps. Limited mobile use cases."
+    },
+    {
+      "name": "FrameworkBench",
+      "reason": "Backend performance monitoring doesn't translate well to mobile. Very niche technical market."
+    },
+    {
+      "name": "VMPocket",
+      "reason": "Extremely niche market. VM management primarily requires desktop environments, limiting mobile utility."
+    },
+    {
+      "name": "PrintData",
+      "reason": "Highly experimental with unclear practical applications. No evidence of real demand for 3D-printed data storage."
+    },
+    {
+      "name": "ReviewTracker",
+      "reason": "Code review is primarily desktop activity. Better suited as browser extension than mobile app."
+    }
+  ]
+}

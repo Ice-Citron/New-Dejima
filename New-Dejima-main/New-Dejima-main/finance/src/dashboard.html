@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Dejima — Admin Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    background: #0a0a1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a0a3e 0%, #0d1b3e 50%, #0a2a1a 100%);
+    padding: 24px 32px;
+    border-bottom: 1px solid #2a2a4a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header h1 {
+    font-size: 24px;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+  }
+  .header .status {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 13px;
+    color: #888;
+  }
+  .header .status .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #34d399;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 24px 32px;
+  }
+
+  .card {
+    background: #111128;
+    border: 1px solid #2a2a4a;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .card h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  .card .big {
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .card .sub {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .green { color: #34d399; }
+  .red { color: #f87171; }
+  .blue { color: #60a5fa; }
+  .purple { color: #a78bfa; }
+  .yellow { color: #fbbf24; }
+
+  .section {
+    padding: 0 32px 24px;
+  }
+  .section h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #1a1a3a;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    color: #888;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #2a2a4a;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1a1a3a;
+  }
+  tr:hover td {
+    background: #1a1a2e;
+  }
+
+  .ratio-bar {
+    width: 100px;
+    height: 6px;
+    background: #1a1a3a;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  .ratio-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+
+  .event-log {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 12px;
+  }
+  .event-row {
+    padding: 6px 12px;
+    border-bottom: 1px solid #1a1a2a;
+    display: flex;
+    gap: 12px;
+  }
+  .event-row .time {
+    color: #555;
+    min-width: 80px;
+  }
+  .event-row .type {
+    min-width: 60px;
+    font-weight: 600;
+  }
+  .event-row .type.cost { color: #f87171; }
+  .event-row .type.revenue { color: #34d399; }
+  .event-row .type.build { color: #60a5fa; }
+
+  .gauge {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 0 auto;
+  }
+  .gauge svg {
+    transform: rotate(-90deg);
+  }
+  .gauge-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .gauge-label .value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .gauge-label .unit {
+    font-size: 11px;
+    color: #888;
+  }
+
+  .thesis-box {
+    background: linear-gradient(135deg, #1a0a2e, #0a1a2e);
+    border: 1px solid #3a2a6a;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  .thesis-box .formula {
+    font-size: 20px;
+    margin: 12px 0;
+    letter-spacing: 1px;
+  }
+
+  .paid-banner {
+    background: linear-gradient(135deg, #0d1f3c, #1a0d3c);
+    border: 1px solid #2a3a6a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .paid-banner .paid-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .paid-banner .paid-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .paid-banner .paid-dot.on { background: #34d399; }
+  .paid-banner .paid-dot.off { background: #f87171; }
+  .paid-banner .paid-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #60a5fa;
+  }
+  .paid-banner .paid-info {
+    font-size: 12px;
+    color: #888;
+  }
+  .paid-banner a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 16px;
+    border: 1px solid #3a4a6a;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .paid-banner a:hover {
+    background: #1a2a4a;
+  }
+  .paid-stats {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: #888;
+  }
+  .paid-stats .stat-value {
+    color: #60a5fa;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NEW DEJIMA</h1>
+  <div class="status">
+    <span><span class="dot"></span> Live</span>
+    <span id="lastUpdate">—</span>
+    <span style="border-left: 1px solid #333; padding-left: 12px;">Powered by <a href="https://app.paid.ai" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:600;">Paid.ai</a></span>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>Total Cost</h2>
+    <div class="big red" id="totalCost">$0.00</div>
+    <div class="sub" id="totalTokens">0 tokens</div>
+  </div>
+  <div class="card">
+    <h2>Total Revenue</h2>
+    <div class="big green" id="totalRevenue">$0.00</div>
+    <div class="sub" id="totalBuilds">0 builds</div>
+  </div>
+  <div class="card">
+    <h2>Net Profit</h2>
+    <div class="big" id="netProfit">$0.00</div>
+    <div class="sub" id="profitStatus">—</div>
+  </div>
+  <div class="card" style="text-align: center;">
+    <h2>Sustainability Ratio</h2>
+    <div class="gauge">
+      <svg width="120" height="120">
+        <circle cx="60" cy="60" r="50" stroke="#1a1a3a" stroke-width="8" fill="none"/>
+        <circle id="gaugeArc" cx="60" cy="60" r="50" stroke="#34d399" stroke-width="8" fill="none"
+                stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round"/>
+      </svg>
+      <div class="gauge-label">
+        <div class="value" id="ratioValue">0.00x</div>
+        <div class="unit">ratio</div>
+      </div>
+    </div>
+  </div>
+  <div class="thesis-box">
+    <h2>Core Thesis</h2>
+    <div class="formula">
+      <span class="green">money_made_per_token</span>
+      <span style="color:#888"> &gt; </span>
+      <span class="red">cost_per_token</span>
+      <span style="color:#888"> = </span>
+      <span class="purple">self-sustaining AI</span>
+    </div>
+  </div>
+
+  <div class="paid-banner" id="paidBanner">
+    <div class="paid-left">
+      <span class="paid-dot off" id="paidDot"></span>
+      <span class="paid-label">Paid.ai</span>
+      <span class="paid-info" id="paidInfo">Checking connection...</span>
+    </div>
+    <div class="paid-stats" id="paidStats"></div>
+    <a href="https://app.paid.ai" target="_blank" id="paidLink" style="display:none">Open Paid.ai Dashboard &rarr;</a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Agent Economics</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th>Model</th>
+        <th>Cost</th>
+        <th>Revenue</th>
+        <th>Net</th>
+        <th>Tokens</th>
+        <th>Builds</th>
+        <th>Ratio</th>
+      </tr>
+    </thead>
+    <tbody id="agentTable">
+      <tr><td colspan="8" style="color:#555">No agents yet</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Event Log</h2>
+  <div class="event-log" id="eventLog">
+    <div class="event-row"><span class="time" style="color:#555">Waiting for events...</span></div>
+  </div>
+</div>
+
+<script>
+  async function refreshPaidStatus() {
+    try {
+      const res = await fetch('/api/paid/status');
+      const { configured } = await res.json();
+      const dot = document.getElementById('paidDot');
+      const info = document.getElementById('paidInfo');
+      const link = document.getElementById('paidLink');
+      const stats = document.getElementById('paidStats');
+
+      if (configured) {
+        dot.className = 'paid-dot on';
+        info.textContent = 'Connected — signals streaming';
+        link.style.display = 'inline-block';
+
+        // Fetch Paid.ai data
+        const [prodRes, custRes, ordRes] = await Promise.all([
+          fetch('/api/paid/products'),
+          fetch('/api/paid/customers'),
+          fetch('/api/paid/orders'),
+        ]);
+        const products = await prodRes.json();
+        const customers = await custRes.json();
+        const orders = await ordRes.json();
+
+        const pc = Array.isArray(products) ? products.length : 0;
+        const cc = Array.isArray(customers) ? customers.length : 0;
+        const oc = Array.isArray(orders) ? orders.length : 0;
+
+        stats.innerHTML = `
+          <span>Products: <span class="stat-value">${pc}</span></span>
+          <span>Customers: <span class="stat-value">${cc}</span></span>
+          <span>Orders: <span class="stat-value">${oc}</span></span>
+        `;
+      } else {
+        dot.className = 'paid-dot off';
+        info.textContent = 'Not configured — set PAID_AI_API_KEY';
+        link.style.display = 'none';
+        stats.innerHTML = '';
+      }
+    } catch {}
+  }
+
+  async function refresh() {
+    try {
+      const [ecoRes, evtRes] = await Promise.all([
+        fetch('/api/economics'),
+        fetch('/api/events'),
+      ]);
+      const economics = await ecoRes.json();
+      const events = await evtRes.json();
+
+      document.getElementById('lastUpdate').textContent =
+        new Date().toLocaleTimeString();
+
+      // Totals
+      let totalCost = 0, totalRevenue = 0, totalTokens = 0, totalBuilds = 0;
+      for (const [, d] of Object.entries(economics)) {
+        totalCost += d.cost;
+        totalRevenue += d.revenue;
+        totalTokens += d.tokens;
+        totalBuilds += d.builds;
+      }
+
+      document.getElementById('totalCost').textContent = '$' + totalCost.toFixed(4);
+      document.getElementById('totalRevenue').textContent = '$' + totalRevenue.toFixed(4);
+      document.getElementById('totalTokens').textContent = totalTokens.toLocaleString() + ' tokens';
+      document.getElementById('totalBuilds').textContent = totalBuilds + ' builds';
+
+      const net = totalRevenue - totalCost;
+      const netEl = document.getElementById('netProfit');
+      netEl.textContent = '$' + net.toFixed(4);
+      netEl.className = 'big ' + (net >= 0 ? 'green' : 'red');
+      document.getElementById('profitStatus').textContent =
+        net >= 0 ? 'PROFITABLE' : 'Deficit';
+
+      const ratio = totalCost > 0 ? totalRevenue / totalCost : 0;
+      document.getElementById('ratioValue').textContent = ratio.toFixed(2) + 'x';
+
+      const arc = document.getElementById('gaugeArc');
+      const pct = Math.min(ratio, 2) / 2; // 2x = full circle
+      arc.setAttribute('stroke-dashoffset', String(314 - 314 * pct));
+      arc.setAttribute('stroke', ratio >= 1 ? '#34d399' : '#f87171');
+
+      // Agent table
+      const tbody = document.getElementById('agentTable');
+      const entries = Object.entries(economics);
+      if (entries.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" style="color:#555">No agents yet</td></tr>';
+      } else {
+        tbody.innerHTML = entries.map(([id, d]) => {
+          const r = d.cost > 0 ? d.revenue / d.cost : 0;
+          const n = d.revenue - d.cost;
+          const barWidth = Math.min(r, 2) / 2 * 100;
+          const barColor = r >= 1 ? '#34d399' : '#f87171';
+          return `<tr>
+            <td style="color:#a78bfa">${id}</td>
+            <td style="color:#555">${d.lastModel || '—'}</td>
+            <td class="red">$${d.cost.toFixed(4)}</td>
+            <td class="green">$${d.revenue.toFixed(4)}</td>
+            <td class="${n >= 0 ? 'green' : 'red'}">$${n.toFixed(4)}</td>
+            <td>${d.tokens.toLocaleString()}</td>
+            <td>${d.builds}</td>
+            <td>${r.toFixed(2)}x <div class="ratio-bar"><div class="ratio-fill" style="width:${barWidth}%;background:${barColor}"></div></div></td>
+          </tr>`;
+        }).join('');
+      }
+
+      // Event log (newest first)
+      const logEl = document.getElementById('eventLog');
+      if (events.length === 0) {
+        logEl.innerHTML = '<div class="event-row"><span class="time" style="color:#555">Waiting for events...</span></div>';
+      } else {
+        logEl.innerHTML = events.slice(-50).reverse().map(e => {
+          const time = new Date(e.timestamp).toLocaleTimeString();
+          let detail = '';
+          if (e.type === 'cost') detail = `${e.data.model} — $${(e.data.costUsd || 0).toFixed(4)} (${((e.data.inputTokens || 0) + (e.data.outputTokens || 0)).toLocaleString()} tokens)`;
+          if (e.type === 'revenue') detail = `${e.data.source} — $${(e.data.amountUsd || 0).toFixed(2)} ${e.data.description || ''}`;
+          if (e.type === 'build') detail = `${e.data.appName || 'app'} — ${e.data.success ? 'SUCCESS' : 'FAILED'} ${e.data.apkSize ? `(${(e.data.apkSize / 1e6).toFixed(1)}MB)` : ''}`;
+          return `<div class="event-row">
+            <span class="time">${time}</span>
+            <span class="type ${e.type}">${e.type.toUpperCase()}</span>
+            <span>${e.agentId}</span>
+            <span style="color:#888">${detail}</span>
+          </div>`;
+        }).join('');
+      }
+    } catch (err) {
+      console.error('Refresh error:', err);
+    }
+  }
+
+  refresh();
+  refreshPaidStatus();
+  setInterval(refresh, 5000);
+  setInterval(refreshPaidStatus, 15000); // Paid.ai status refreshes every 15s
+</script>
+</body>
+</html>

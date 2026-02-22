@@ -1,0 +1,501 @@
+[
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:48:12.470Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 5000,
+      "outputTokens": 2000,
+      "costUsd": 0.225
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:48:21.762Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 4.99,
+      "description": "GolfDeals subscription"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:48:23.729Z",
+    "data": {
+      "appName": "GolfDeals",
+      "apkSize": 51400000,
+      "success": true
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.215Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 111093,
+      "outputTokens": 66456,
+      "costUsd": 6.650595
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.225Z",
+    "data": {
+      "appName": "workout-timer",
+      "apkSize": 16846926,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.240Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 9.62,
+      "description": "workout-timer download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.243Z",
+    "data": {
+      "appName": "GolfDeals",
+      "apkSize": 31698983,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.246Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 3.62,
+      "description": "GolfDeals download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.250Z",
+    "data": {
+      "appName": "mood-tracker",
+      "apkSize": 18417238,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.253Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 3.32,
+      "description": "mood-tracker download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.256Z",
+    "data": {
+      "appName": "expense-tracker",
+      "apkSize": 46633818,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.259Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 9.38,
+      "description": "expense-tracker download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.261Z",
+    "data": {
+      "appName": "flashcard-app",
+      "apkSize": 23953973,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.265Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 8.52,
+      "description": "flashcard-app download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.267Z",
+    "data": {
+      "appName": "habit-tracker",
+      "apkSize": 28576882,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.271Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 8.24,
+      "description": "habit-tracker download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.273Z",
+    "data": {
+      "appName": "stock-tracker",
+      "apkSize": 59890725,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.276Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 9.95,
+      "description": "stock-tracker download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.279Z",
+    "data": {
+      "appName": "crypto-dashboard",
+      "apkSize": 57833362,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.282Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 5.41,
+      "description": "crypto-dashboard download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.285Z",
+    "data": {
+      "appName": "tic-tac-toe",
+      "apkSize": 42676508,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.288Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 6.55,
+      "description": "tic-tac-toe download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.291Z",
+    "data": {
+      "appName": "unit-converter",
+      "apkSize": 12246664,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.294Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 7.43,
+      "description": "unit-converter download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.298Z",
+    "data": {
+      "appName": "weather-space",
+      "apkSize": 33521060,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.301Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 8.2,
+      "description": "weather-space download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.304Z",
+    "data": {
+      "appName": "country-explorer",
+      "apkSize": 34932791,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.307Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 5.71,
+      "description": "country-explorer download"
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.311Z",
+    "data": {
+      "appName": "recipe-finder",
+      "apkSize": 37055331,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:51:42.314Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 1.64,
+      "description": "recipe-finder download"
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "idea-engine",
+    "timestamp": "2026-02-22T07:51:42.317Z",
+    "data": {
+      "model": "claude-sonnet-4-20250514",
+      "inputTokens": 66671,
+      "outputTokens": 80967,
+      "costUsd": 4.71506
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "dropship-engine",
+    "timestamp": "2026-02-22T07:51:42.320Z",
+    "data": {
+      "model": "claude-sonnet-4-20250514",
+      "inputTokens": 92605,
+      "outputTokens": 34466,
+      "costUsd": 2.64935
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "dropship-engine",
+    "timestamp": "2026-02-22T07:51:42.323Z",
+    "data": {
+      "appName": "MMAFit-Store",
+      "apkSize": 32447164,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "dropship-engine",
+    "timestamp": "2026-02-22T07:51:42.326Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 3.11,
+      "description": "MMAFit-Store download"
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:18.451Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 12988,
+      "outputTokens": 11840,
+      "costUsd": 1.08282
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:18.839Z",
+    "data": {
+      "appName": "workout-timer",
+      "apkSize": 39133226,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.003Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 5.01,
+      "description": "workout-timer download"
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.169Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 23098,
+      "outputTokens": 11965,
+      "costUsd": 1.243845
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.298Z",
+    "data": {
+      "appName": "GolfDeals",
+      "apkSize": 42726728,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.437Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 2.82,
+      "description": "GolfDeals download"
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.579Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 11128,
+      "outputTokens": 12536,
+      "costUsd": 1.10712
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.720Z",
+    "data": {
+      "appName": "ADHDPlanner",
+      "apkSize": 38268271,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:19.882Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 8.67,
+      "description": "ADHDPlanner download"
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:20.034Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 13449,
+      "outputTokens": 3977,
+      "costUsd": 0.50001
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:20.204Z",
+    "data": {
+      "appName": "mood-tracker",
+      "apkSize": 40207757,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:20.338Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 7.58,
+      "description": "mood-tracker download"
+    }
+  },
+  {
+    "type": "cost",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:20.474Z",
+    "data": {
+      "model": "claude-opus-4-6",
+      "inputTokens": 21744,
+      "outputTokens": 6183,
+      "costUsd": 0.789885
+    }
+  },
+  {
+    "type": "build",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:20.617Z",
+    "data": {
+      "appName": "expense-tracker",
+      "apkSize": 54447450,
+      "success": true
+    }
+  },
+  {
+    "type": "revenue",
+    "agentId": "c3po-dev",
+    "timestamp": "2026-02-22T07:57:20.746Z",
+    "data": {
+      "source": "android_app",
+      "amountUsd": 9.71,
+      "description": "expense-tracker download"
+    }
+  }
+]

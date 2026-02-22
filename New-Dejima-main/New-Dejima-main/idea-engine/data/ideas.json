@@ -1,0 +1,426 @@
+{
+  "updated_at": "2026-02-21T19:59:18.502169+00:00",
+  "total": 20,
+  "ideas": [
+    {
+      "name": "DevVault",
+      "description": "A mobile companion app for secure, quick-access storage of operational data like SSH credentials, server IPs, and CLI snippets. Features offline-first design with biometric unlock and one-tap copying for fast workflow integration.",
+      "key_features": [
+        "Biometric authentication with offline storage",
+        "Quick search and one-tap copy functionality",
+        "Categorized storage (servers, credentials, commands, IPs)",
+        "Sync across devices with end-to-end encryption",
+        "Custom tags and favorites for frequent items"
+      ],
+      "monetization": "Freemium model - free for basic storage, premium for unlimited items, team sharing, and advanced encryption",
+      "complexity": "medium",
+      "problem": "DevOps engineers and technical professionals struggle with securely storing and quickly accessing operational data like SSH passwords, IP addresses, and CLI commands. Existing solutions are either too insecure (text files) or too slow/bloated (password managers, clipboard managers) for their fast-paced workflow.",
+      "target_audience": "DevOps engineers, system administrators, software developers, and IT professionals who frequently work with sensitive operational data",
+      "confidence": 6,
+      "reasoning": "Clear problem from target user, but limited market validation. The need is real for technical users, but mobile might not be the primary platform for DevOps work. Desktop/web solutions might be more appropriate.",
+      "market_signals": "Post shows personal pain point from experienced developer, building actual solution indicates real need. Limited engagement (22 upvotes, 9 comments) suggests niche but dedicated audience.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "SnipSecure",
+      "description": "Mobile-first snippet manager specifically designed for technical professionals. Focuses on speed and security with specialized templates for different types of operational data.",
+      "key_features": [
+        "Pre-built templates for SSH, database connections, API keys",
+        "OCR scanning of credentials from screens/documents",
+        "Time-based access logging for security audits",
+        "Integration with common DevOps tools via URL schemes",
+        "Encrypted local storage with optional cloud backup"
+      ],
+      "monetization": "One-time purchase with optional premium features subscription",
+      "complexity": "medium",
+      "problem": "DevOps engineers and technical professionals struggle with securely storing and quickly accessing operational data like SSH passwords, IP addresses, and CLI commands. Existing solutions are either too insecure (text files) or too slow/bloated (password managers, clipboard managers) for their fast-paced workflow.",
+      "target_audience": "DevOps engineers, system administrators, software developers, and IT professionals who frequently work with sensitive operational data",
+      "confidence": 6,
+      "reasoning": "Clear problem from target user, but limited market validation. The need is real for technical users, but mobile might not be the primary platform for DevOps work. Desktop/web solutions might be more appropriate.",
+      "market_signals": "Post shows personal pain point from experienced developer, building actual solution indicates real need. Limited engagement (22 upvotes, 9 comments) suggests niche but dedicated audience.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "AI Reality Check",
+      "description": "A mobile app that tracks and analyzes real AI adoption versus hype across different software categories. Helps users make informed decisions about AI tool investments and implementations.",
+      "key_features": [
+        "Database of software tools with AI adoption tracking",
+        "User reviews on actual AI feature utility",
+        "Cost-benefit analysis for AI implementations",
+        "Industry-specific AI adoption reports",
+        "Hype vs. reality scoring system"
+      ],
+      "monetization": "Subscription for detailed reports and industry insights, affiliate commissions for tool recommendations",
+      "complexity": "complex",
+      "problem": "AI has failed to fundamentally transform existing software applications, only being added as supplementary features rather than replacing core functionality. This suggests a gap between AI hype and practical utility.",
+      "target_audience": "Software developers, product managers, and business leaders looking to understand AI's practical limitations and opportunities",
+      "confidence": 3,
+      "reasoning": "While the observation about AI limitations is valid, it doesn't translate to a clear mobile app opportunity. The market for AI analysis tools is limited and better served by research platforms than mobile apps.",
+      "market_signals": "Moderate engagement (21 upvotes, 23 comments) suggests interest in AI skepticism. However, this is more of an opinion/analysis post than a clear problem statement.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "TimeReality",
+      "description": "A visual day planner that uses time-blocking and visual cues to help users with ADHD create realistic daily schedules. Shows tasks as time blocks on a visual timeline to prevent overcommitting.",
+      "key_features": [
+        "Visual 24-hour timeline with drag-and-drop task scheduling",
+        "ADHD-specific features like buffer time and transition periods",
+        "Focus mode with distraction blocking",
+        "Energy level tracking and task matching",
+        "Realistic time estimation learning system"
+      ],
+      "monetization": "Freemium model with basic planning free, premium features for advanced ADHD tools, analytics, and customization",
+      "complexity": "medium",
+      "problem": "People with ADHD struggle with time-blindness and unrealistic task planning, often overestimating what they can accomplish in a day. Traditional to-do lists don't provide visual feedback about time constraints.",
+      "target_audience": "Adults with ADHD, neurodivergent individuals, and anyone struggling with time management and realistic daily planning",
+      "confidence": 7,
+      "reasoning": "Strong personal validation from someone who built and uses the solution. ADHD market is growing, underserved, and willing to pay for effective tools. Mobile format fits well with on-the-go planning needs.",
+      "market_signals": "Personal problem from developer who built solution, specific mention of ADHD community need. Low engagement (17 upvotes, 2 comments) but ADHD market is underserved and willing to pay for effective tools.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "ADHD Planner Pro",
+      "description": "Comprehensive mobile planning app designed specifically for neurodivergent brains. Combines visual scheduling with ADHD-friendly features like hyperfocus timers and dopamine rewards.",
+      "key_features": [
+        "Multiple view modes (radial clock, timeline, kanban)",
+        "Built-in break reminders and hyperfocus alerts",
+        "Gamification with achievement system",
+        "Mood and energy tracking integration",
+        "Sharing features for accountability partners"
+      ],
+      "monetization": "Subscription model with monthly/yearly tiers, potential partnership with ADHD coaches",
+      "complexity": "medium",
+      "problem": "People with ADHD struggle with time-blindness and unrealistic task planning, often overestimating what they can accomplish in a day. Traditional to-do lists don't provide visual feedback about time constraints.",
+      "target_audience": "Adults with ADHD, neurodivergent individuals, and anyone struggling with time management and realistic daily planning",
+      "confidence": 7,
+      "reasoning": "Strong personal validation from someone who built and uses the solution. ADHD market is growing, underserved, and willing to pay for effective tools. Mobile format fits well with on-the-go planning needs.",
+      "market_signals": "Personal problem from developer who built solution, specific mention of ADHD community need. Low engagement (17 upvotes, 2 comments) but ADHD market is underserved and willing to pay for effective tools.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "AgentHub",
+      "description": "A mobile marketplace app where users can discover, test, and deploy AI agents for various tasks. Simplifies AI agent adoption for non-technical users through a mobile-friendly interface.",
+      "key_features": [
+        "Browse and test AI agents by category/use case",
+        "One-click deployment for common business tasks",
+        "Usage analytics and performance tracking",
+        "Integration with popular business tools",
+        "Community ratings and reviews"
+      ],
+      "monetization": "Transaction fees on agent purchases, premium subscriptions for advanced features",
+      "complexity": "complex",
+      "problem": "AI agents currently require hardcoded tool integrations, making them inflexible and difficult to scale. There's no standardized marketplace for AI agents to discover and use tools at runtime.",
+      "target_audience": "AI developers, enterprise companies building AI agents, and organizations looking to create flexible AI automation systems",
+      "confidence": 2,
+      "reasoning": "While the technical problem is valid, it's primarily a B2B infrastructure issue better suited for web platforms. Limited engagement suggests minimal market interest, and mobile isn't the right format for this type of enterprise tool.",
+      "market_signals": "Very low engagement (13 upvotes, 3 comments) suggests limited interest. This is a highly technical B2B problem that may not translate well to mobile consumer apps.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "HearSafe",
+      "description": "A mobile app that monitors and limits audio output to prevent hearing damage from sudden volume spikes. Works system-wide to protect users from dangerous audio levels across all apps and calls.",
+      "key_features": [
+        "Real-time audio level monitoring and limiting",
+        "Customizable volume thresholds based on user hearing profile",
+        "Emergency volume spike protection during calls",
+        "Hearing health tracking and alerts",
+        "Integration with accessibility settings"
+      ],
+      "monetization": "Freemium with basic protection free, premium for advanced customization and health tracking",
+      "complexity": "complex",
+      "problem": "Phone users can experience sudden, dangerous volume spikes from automated systems that can potentially damage hearing. There's no reliable protection against unexpected loud audio from calls or apps.",
+      "target_audience": "All smartphone users, particularly those who frequently take calls from automated systems, elderly users, and people with hearing sensitivity",
+      "confidence": 5,
+      "reasoning": "Real safety need affecting all smartphone users, but technical implementation may be limited by OS restrictions on system-wide audio control. Market demand unclear, and users might expect this protection to be built into the OS rather than requiring a separate app.",
+      "market_signals": "Personal injury report suggests real safety issue. Low engagement (13 upvotes, 5 comments) but hearing protection is a universal concern with potential liability implications for phone manufacturers.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "VolumeGuard",
+      "description": "Simple audio protection app that prevents dangerous volume levels and provides quick volume recovery tools. Focuses specifically on call and media safety.",
+      "key_features": [
+        "Automatic volume limiting with bypass for emergencies",
+        "Call-specific volume controls",
+        "Quick volume reset shortcuts",
+        "Incident logging for medical documentation",
+        "Compatible with hearing aids and accessibility devices"
+      ],
+      "monetization": "One-time purchase or small subscription fee",
+      "complexity": "medium",
+      "problem": "Phone users can experience sudden, dangerous volume spikes from automated systems that can potentially damage hearing. There's no reliable protection against unexpected loud audio from calls or apps.",
+      "target_audience": "All smartphone users, particularly those who frequently take calls from automated systems, elderly users, and people with hearing sensitivity",
+      "confidence": 5,
+      "reasoning": "Real safety need affecting all smartphone users, but technical implementation may be limited by OS restrictions on system-wide audio control. Market demand unclear, and users might expect this protection to be built into the OS rather than requiring a separate app.",
+      "market_signals": "Personal injury report suggests real safety issue. Low engagement (13 upvotes, 5 comments) but hearing protection is a universal concern with potential liability implications for phone manufacturers.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:13:26.139463+00:00",
+      "status": "new"
+    },
+    {
+      "name": "DevStack Builder",
+      "description": "A mobile companion app for developers to quickly scaffold and manage their full-stack applications. Provides templates, monitors deployed apps, and manages common backend services from mobile.",
+      "key_features": [
+        "Quick project scaffolding with pre-built templates",
+        "Mobile dashboard for monitoring app health and metrics",
+        "Push notifications for deployment status and errors",
+        "Code snippet library for common patterns",
+        "Integration with popular hosting platforms"
+      ],
+      "monetization": "Freemium model with premium templates and advanced monitoring features",
+      "complexity": "complex",
+      "problem": "Developers waste time repeatedly implementing basic infrastructure like auth, database, APIs, and cron jobs for every new app they build. They also don't want to rely on multiple managed platforms to run their applications.",
+      "target_audience": "Full-stack developers and small development teams building TypeScript/MongoDB applications",
+      "confidence": 4,
+      "reasoning": "While there's clear developer pain around repetitive infrastructure setup, mobile apps aren't the ideal solution for complex development workflows. Developers prefer desktop/web interfaces for coding tasks. The problem is real but mobile isn't the right medium.",
+      "market_signals": "Moderate engagement (72 upvotes, 44 comments) on HN suggests developer interest, but this is a technical infrastructure problem",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:23:00.032915+00:00",
+      "status": "new"
+    },
+    {
+      "name": "PaySync Mobile",
+      "description": "A mobile dashboard for monitoring and managing payment data synchronization between Stripe and databases. Provides real-time insights and alerts for payment operations.",
+      "key_features": [
+        "Real-time payment sync status monitoring",
+        "Push notifications for failed transactions or sync issues",
+        "Mobile-friendly payment analytics dashboard",
+        "Quick dispute and refund management",
+        "Integration health monitoring"
+      ],
+      "monetization": "Subscription tiers based on transaction volume and premium analytics",
+      "complexity": "medium",
+      "problem": "Developers struggle with Stripe webhook complexity and want simpler ways to sync payment data to their own databases without dealing with webhook reliability issues.",
+      "target_audience": "Indie developers, small SaaS companies, and developers building payment-enabled applications",
+      "confidence": 5,
+      "reasoning": "Payment monitoring has mobile use cases, but the core problem (webhook complexity) is primarily solved through backend libraries, not mobile apps. The monitoring aspect could work mobile-first, but limited market size among indie developers.",
+      "market_signals": "Good technical engagement (66 upvotes, 30 comments) indicates developer interest in Stripe tooling",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:23:00.032915+00:00",
+      "status": "new"
+    },
+    {
+      "name": "QuickHome",
+      "description": "A lightweight, fast iOS app optimized for quick HomeKit control with customizable shortcuts and widgets. Focuses on speed and efficiency over comprehensive features.",
+      "key_features": [
+        "Ultra-fast device control with minimal loading time",
+        "Customizable home screen widgets for common actions",
+        "Scene shortcuts and automation triggers",
+        "Favorite devices quick access",
+        "Apple Watch integration for instant control"
+      ],
+      "monetization": "Paid app ($2-5) with optional premium features for advanced automation",
+      "complexity": "medium",
+      "problem": "Smart home users with many devices find the default Home app too slow and cumbersome for quick adjustments and control of their HomeKit devices.",
+      "target_audience": "Smart home enthusiasts and power users with multiple HomeKit devices who want quick, lightweight control",
+      "confidence": 7,
+      "reasoning": "This directly addresses a mobile use case with clear user pain points. Smart home control is inherently mobile-first, and there's evident demand from power users. The technical solution (faster HomeKit interface) is feasible and has a defined target market willing to pay.",
+      "market_signals": "Strong engagement (57 upvotes, 48 comments) and the developer mentioning 130+ devices shows real power user demand",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:23:00.032915+00:00",
+      "status": "new"
+    },
+    {
+      "name": "FrameworkBench",
+      "description": "A mobile app for developers to benchmark, compare, and monitor the performance of different JavaScript frameworks and their applications in real-time.",
+      "key_features": [
+        "Real-time performance monitoring of deployed apps",
+        "Framework comparison benchmarks and metrics",
+        "Performance alerts and recommendations",
+        "Load testing triggers from mobile",
+        "Performance history tracking and trends"
+      ],
+      "monetization": "Freemium with premium monitoring features and detailed analytics",
+      "complexity": "complex",
+      "problem": "JavaScript developers need faster backend frameworks and better performance optimization tools, but most frameworks don't leverage advanced compilation techniques for speed.",
+      "target_audience": "Backend JavaScript/TypeScript developers focused on high-performance applications",
+      "confidence": 3,
+      "reasoning": "This is primarily a backend development concern that doesn't translate well to mobile. Performance monitoring could have mobile components, but the core need is for development tools that work better on desktop. Very niche market with limited mobile use cases.",
+      "market_signals": "Limited engagement (54 upvotes, 10 comments) suggests niche technical interest",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:23:00.032915+00:00",
+      "status": "new"
+    },
+    {
+      "name": "AgentFlow",
+      "description": "A mobile interface for orchestrating and monitoring multi-agent AI workflows. Allows users to set up, monitor, and intervene in complex AI task coordination from anywhere.",
+      "key_features": [
+        "Visual workflow builder for agent coordination",
+        "Real-time monitoring of agent progress and status",
+        "Push notifications for task completion or failures",
+        "Manual intervention and task redirection capabilities",
+        "Template library for common multi-agent patterns"
+      ],
+      "monetization": "Usage-based pricing tied to agent orchestration and API calls",
+      "complexity": "complex",
+      "problem": "Single-agent LLMs fail at complex, long-running tasks due to stalling, looping, and generating broken code. Developers need better coordination between multiple AI agents for complex work.",
+      "target_audience": "AI developers, automation engineers, and teams building complex LLM-powered applications",
+      "confidence": 6,
+      "reasoning": "Multi-agent AI orchestration is a growing field, and mobile monitoring/control has clear value for complex, long-running tasks. However, the technical complexity is high and the market is still emerging. The mobile use case (monitoring and intervention) is valid but requires significant backend infrastructure.",
+      "market_signals": "Good engagement (53 upvotes, 39 comments) shows interest in multi-agent systems",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:23:00.032915+00:00",
+      "status": "new"
+    },
+    {
+      "name": "GuideMe",
+      "description": "A mobile companion app that provides step-by-step visual guidance for desktop and mobile applications. Users can search for tasks or scan QR codes from software to get overlay instructions on their phone screen.",
+      "key_features": [
+        "Task search and categorization by software",
+        "AR overlay instructions viewable on phone",
+        "Screenshot recognition to identify current step",
+        "Community-generated guide library",
+        "Offline guide downloads for common tasks"
+      ],
+      "monetization": "Freemium model with premium guides, enterprise licensing for companies, affiliate partnerships with software vendors",
+      "complexity": "complex",
+      "problem": "Users struggle with learning new software interfaces and constantly switch between help resources and applications, needing to paste screenshots and ask for step-by-step guidance. This creates friction and inefficiency when trying to complete tasks in unfamiliar software.",
+      "target_audience": "Non-technical users, elderly users, employees learning new software, customer support teams, and anyone struggling with complex application interfaces",
+      "confidence": 6,
+      "reasoning": "While the problem is real and affects many users, the mobile app translation is challenging. The original desktop solution makes more sense than a mobile companion. Mobile apps would struggle with screen overlay capabilities and cross-platform integration. The market may be too niche for strong monetization.",
+      "market_signals": "Moderate engagement (52 upvotes, 22 comments) on HackerNews indicates developer interest. The problem resonates with technical audience who understand user experience challenges.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "ClickHelper",
+      "description": "Mobile app that allows users to take screenshots of their computer screen and receive instant step-by-step instructions. AI analyzes the screenshot and provides next-step guidance with visual markers.",
+      "key_features": [
+        "Screenshot upload and analysis",
+        "AI-powered step detection",
+        "Visual annotations on screenshots",
+        "Progress tracking through multi-step tasks",
+        "Integration with popular software documentation"
+      ],
+      "monetization": "Subscription tiers based on usage limits, premium AI features, enterprise support packages",
+      "complexity": "complex",
+      "problem": "Users struggle with learning new software interfaces and constantly switch between help resources and applications, needing to paste screenshots and ask for step-by-step guidance. This creates friction and inefficiency when trying to complete tasks in unfamiliar software.",
+      "target_audience": "Non-technical users, elderly users, employees learning new software, customer support teams, and anyone struggling with complex application interfaces",
+      "confidence": 6,
+      "reasoning": "While the problem is real and affects many users, the mobile app translation is challenging. The original desktop solution makes more sense than a mobile companion. Mobile apps would struggle with screen overlay capabilities and cross-platform integration. The market may be too niche for strong monetization.",
+      "market_signals": "Moderate engagement (52 upvotes, 22 comments) on HackerNews indicates developer interest. The problem resonates with technical audience who understand user experience challenges.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "VMPocket",
+      "description": "A mobile remote management app for virtual machines that simplifies common VM operations. Connect to home labs or cloud instances to monitor, start/stop, and manage VMs from anywhere.",
+      "key_features": [
+        "Remote VM monitoring and control",
+        "Simple one-tap VM start/stop/restart",
+        "Resource usage visualization",
+        "SSH terminal access within app",
+        "Multi-hypervisor support (VMware, VirtualBox, etc.)"
+      ],
+      "monetization": "Freemium with connection limits, premium features for enterprise users, white-label solutions",
+      "complexity": "medium",
+      "problem": "Developers and system administrators find existing VM management tools like virt-manager overly complex with poor UI/UX, requiring too many clicks for simple tasks and lacking proper hardware acceleration support.",
+      "target_audience": "Software developers, system administrators, DevOps engineers, and tech enthusiasts who manage virtual machines",
+      "confidence": 4,
+      "reasoning": "Very niche market limited to technical users who manage VMs. Mobile VM management has limited use cases since most VM work requires desktop environments. The target audience is small and may prefer desktop solutions. Limited monetization potential due to narrow market.",
+      "market_signals": "Lower engagement (42 upvotes, 11 comments) suggests niche technical audience. Comments likely focus on implementation details rather than broad market demand.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "PrintData",
+      "description": "Mobile app that converts small amounts of data (text, URLs, contact info) into 3D printable formats with built-in error correction. Includes camera-based reader to decode printed data objects.",
+      "key_features": [
+        "Data encoding into 3D printable formats",
+        "QR-code-like 3D pattern generation",
+        "Camera-based data reading from printed objects",
+        "Error correction algorithms",
+        "STL file generation and export"
+      ],
+      "monetization": "Freemium with data size limits, premium encoding algorithms, educational licensing",
+      "complexity": "complex",
+      "problem": "Users want to explore novel ways of encoding and storing data using 3D printing technology, but lack accessible tools or examples for implementing physical data storage solutions.",
+      "target_audience": "3D printing enthusiasts, makers, researchers, educational institutions, and hobbyists interested in experimental data storage",
+      "confidence": 3,
+      "reasoning": "Highly experimental concept with unclear practical applications. The market is extremely niche and the technology challenges are significant. While intellectually interesting, there's little evidence of real demand for physical data storage via 3D printing. Commercial viability is very questionable.",
+      "market_signals": "Moderate engagement (40 upvotes, 76 comments) suggests high interest in the concept. High comment count indicates curiosity and discussion about possibilities.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "ReviewTracker",
+      "description": "Mobile companion app for GitHub that provides better progress tracking for code reviews. Syncs with GitHub to show detailed review metrics and progress across devices.",
+      "key_features": [
+        "Lines reviewed vs total lines tracking",
+        "Review session time tracking",
+        "Progress visualization and statistics",
+        "Team review metrics and leaderboards",
+        "Notification management for pending reviews"
+      ],
+      "monetization": "GitHub integration subscription, team analytics premium features, enterprise reporting tools",
+      "complexity": "medium",
+      "problem": "Developers struggle to track progress when reviewing large pull requests, especially AI-generated ones, because GitHub's 'Files viewed' metric doesn't accurately represent the amount of code actually reviewed.",
+      "target_audience": "Software developers, code reviewers, engineering managers, and development teams dealing with large pull requests",
+      "confidence": 5,
+      "reasoning": "Real problem for developers, but the solution is better suited as a browser extension (as shown) rather than a mobile app. Code review is primarily a desktop activity. Mobile app would have limited utility since developers rarely do serious code reviews on phones. The market exists but mobile isn't the right platform.",
+      "market_signals": "Good engagement (40 upvotes, 50 comments) in developer community. High comment count suggests the problem resonates with many developers who do code reviews regularly.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "GolfDeals",
+      "description": "Mobile app that aggregates golf equipment deals across multiple retailers, focusing on price-per-unit comparisons. Features price tracking, deal alerts, and personalized recommendations based on playing style.",
+      "key_features": [
+        "Price per ball comparison across retailers",
+        "Price history and deal alerts",
+        "Barcode scanning for in-store price comparison",
+        "Golf ball reviews and ratings integration",
+        "Wishlist and inventory tracking"
+      ],
+      "monetization": "Affiliate commissions from retailers, premium deal alerts, sponsored product placements",
+      "complexity": "medium",
+      "problem": "Golf enthusiasts who frequently lose balls need an efficient way to find the best value golf ball deals on Amazon by comparing price per individual ball rather than per package.",
+      "target_audience": "Recreational golfers, particularly high-handicap players who lose balls frequently, budget-conscious golfers, and golf equipment deal hunters",
+      "confidence": 7,
+      "reasoning": "This addresses a real, specific pain point for a clear target audience. Golf is a large market with participants who regularly purchase equipment. The price comparison concept is proven (like the inspiration diskprices.com). Mobile is perfect for on-the-go deal checking and course-side decisions. Monetization through affiliate revenue is straightforward and proven.",
+      "market_signals": "Moderate engagement (34 upvotes, 51 comments) suggests interest. High comment ratio indicates people are engaging with the concept and likely sharing similar experiences.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "BallTracker",
+      "description": "Golf utility app that helps track ball usage, find deals, and manage golf equipment inventory. Includes course-specific ball recommendations based on difficulty and ball-loss probability.",
+      "key_features": [
+        "Ball usage and loss tracking by course",
+        "Price comparison and deal finder",
+        "Course difficulty ratings for ball selection",
+        "Equipment inventory management",
+        "Playing partner ball-sharing features"
+      ],
+      "monetization": "Premium subscription for advanced tracking, affiliate revenue, partnerships with golf courses",
+      "complexity": "simple",
+      "problem": "Golf enthusiasts who frequently lose balls need an efficient way to find the best value golf ball deals on Amazon by comparing price per individual ball rather than per package.",
+      "target_audience": "Recreational golfers, particularly high-handicap players who lose balls frequently, budget-conscious golfers, and golf equipment deal hunters",
+      "confidence": 7,
+      "reasoning": "This addresses a real, specific pain point for a clear target audience. Golf is a large market with participants who regularly purchase equipment. The price comparison concept is proven (like the inspiration diskprices.com). Mobile is perfect for on-the-go deal checking and course-side decisions. Monetization through affiliate revenue is straightforward and proven.",
+      "market_signals": "Moderate engagement (34 upvotes, 51 comments) suggests interest. High comment ratio indicates people are engaging with the concept and likely sharing similar experiences.",
+      "source_post_id": "",
+      "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    }
+  ]
+}

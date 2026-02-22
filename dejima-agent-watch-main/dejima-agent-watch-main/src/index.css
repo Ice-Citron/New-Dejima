@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 93%;
+
+    --card: 222 40% 7%;
+    --card-foreground: 210 40% 93%;
+
+    --popover: 222 40% 7%;
+    --popover-foreground: 210 40% 93%;
+
+    --primary: 187 94% 43%;
+    --primary-foreground: 222 47% 4%;
+
+    --secondary: 222 30% 12%;
+    --secondary-foreground: 210 30% 78%;
+
+    --muted: 222 25% 14%;
+    --muted-foreground: 215 20% 50%;
+
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 20% 14%;
+    --input: 222 20% 14%;
+    --ring: 187 94% 43%;
+
+    --radius: 0.75rem;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 58%;
+    --warning-foreground: 0 0% 0%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --surface-elevated: 222 35% 9%;
+    --surface-glass: 222 40% 8%;
+
+    --neon-cyan: 187 94% 43%;
+    --neon-magenta: 330 81% 60%;
+    --neon-purple: 265 83% 57%;
+    --neon-green: 160 84% 39%;
+    --neon-amber: 45 93% 58%;
+    --neon-orange: 25 95% 53%;
+
+    --sidebar-background: 222 47% 4%;
+    --sidebar-foreground: 210 30% 78%;
+    --sidebar-primary: 187 94% 43%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 25% 14%;
+    --sidebar-accent-foreground: 210 30% 78%;
+    --sidebar-border: 222 20% 14%;
+    --sidebar-ring: 187 94% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Orbitron', sans-serif;
+  }
+  .font-sans {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Grid background */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Scanline overlay */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      hsl(222 40% 8% / 0.8),
+      hsl(222 40% 6% / 0.6)
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(222 20% 16%);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: hsl(187 94% 43% / 0.3);
+    box-shadow:
+      0 0 20px hsl(187 94% 43% / 0.08),
+      0 0 60px hsl(187 94% 43% / 0.04),
+      inset 0 1px 0 hsl(187 94% 43% / 0.1);
+  }
+
+  /* Neon glow text */
+  .text-glow-cyan {
+    text-shadow: 0 0 10px hsl(187 94% 43% / 0.5), 0 0 40px hsl(187 94% 43% / 0.2);
+  }
+  .text-glow-magenta {
+    text-shadow: 0 0 10px hsl(330 81% 60% / 0.5), 0 0 40px hsl(330 81% 60% / 0.2);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      hsl(187 94% 43% / 0.4),
+      hsl(330 81% 60% / 0.2),
+      hsl(265 83% 57% / 0.3),
+      hsl(187 94% 43% / 0.1)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Animated shimmer on gradient border */
+  .gradient-border-animated::before {
+    background: linear-gradient(
+      var(--border-angle, 135deg),
+      hsl(187 94% 43% / 0.5),
+      hsl(330 81% 60% / 0.3),
+      hsl(265 83% 57% / 0.4),
+      hsl(187 94% 43% / 0.2)
+    );
+    animation: border-rotate 4s linear infinite;
+  }
+
+  /* Pulse dot */
+  .pulse-dot {
+    animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Number ticker */
+  .ticker {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Bar shimmer */
+  .bar-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  /* Stagger animation delay helpers */
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+  .stagger-6 { animation-delay: 0.3s; }
+}
+
+@keyframes border-rotate {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes count-up {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 135deg;
+}
