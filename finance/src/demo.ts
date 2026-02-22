@@ -18,24 +18,35 @@ import { trackCost, trackRevenue } from "./cost-tracker.js";
 import { getAgentEconomics, formatEconomicsReport, calculateTokenCost } from "./agent-economics.js";
 import { agentReproductionPipeline } from "./payment-pipeline.js";
 import { destroyVastInstance, closeSSHTunnel } from "./vast-provision.js";
+import { destroyGcpInstance, closeGcpSSHTunnel } from "./gcp-provision.js";
+import type { GpuProvider } from "./payment-pipeline.js";
 import { writeNote } from "./agent-notes.js";
 
 const LIVE_MODE = process.argv.includes("--live");
-const SOL_PAYMENT = 0.5;
+const USE_VAST  = process.argv.includes("--vast");
+const PROVIDER: GpuProvider = USE_VAST ? "vast" : "gcp";
+const SOL_PAYMENT = 0.49;
 
-// Track Vast.ai instance for cleanup on exit
+// Track GPU instance for cleanup on exit
 let vastInstanceId: number | null = null;
+let gcpInstanceName: string | null = null;
 
 async function cleanup() {
   closeSSHTunnel();
+  closeGcpSSHTunnel();
   if (vastInstanceId) {
     console.log(`\n[cleanup] Destroying Vast.ai instance ${vastInstanceId}...`);
-    try {
-      await destroyVastInstance(vastInstanceId);
-    } catch (e: any) {
-      console.warn(`[cleanup] Destroy failed: ${e.message}`);
+    try { await destroyVastInstance(vastInstanceId); } catch (e: any) {
+      console.warn(`[cleanup] Vast destroy failed: ${e.message}`);
     }
     vastInstanceId = null;
+  }
+  if (gcpInstanceName) {
+    console.log(`\n[cleanup] Destroying GCP instance ${gcpInstanceName}...`);
+    try { await destroyGcpInstance(gcpInstanceName); } catch (e: any) {
+      console.warn(`[cleanup] GCP destroy failed: ${e.message}`);
+    }
+    gcpInstanceName = null;
   }
 }
 
@@ -121,17 +132,25 @@ async function main() {
   } else if (!LIVE_MODE) {
     console.log("  [DRY-RUN] Has enough SOL but --live not set. Run with --live to spin up real GPU.\n");
   } else {
+    console.log(`  [provider] Using ${PROVIDER.toUpperCase()} for GPU provisioning\n`);
     const result = await agentReproductionPipeline({
       agentId: "genesis-001",
       agentWallet: genesisWallet,
       treasuryWallet,
       solPayment: SOL_PAYMENT,
-      model: "Qwen/Qwen2.5-7B-Instruct",
+      model: PROVIDER === "gcp"
+        ? "Qwen/Qwen2.5-7B-Instruct-AWQ"   // AWQ fits T4 16GB
+        : "Qwen/Qwen2.5-7B-Instruct",       // fp16 for Vast V100 32GB
+      provider: PROVIDER,
     });
 
-    // Track Vast instance for cleanup
-    if (result.success && result.vast?.instanceId) {
-      vastInstanceId = result.vast.instanceId;
+    // Track instance for cleanup
+    if (result.success) {
+      if (PROVIDER === "vast" && result.vast?.instanceId) {
+        vastInstanceId = result.vast.instanceId as number;
+      } else if (PROVIDER === "gcp" && (result.vast as any)?.instanceName) {
+        gcpInstanceName = (result.vast as any).instanceName;
+      }
     }
 
     // Register the child agent in the family tree

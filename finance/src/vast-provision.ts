@@ -100,14 +100,13 @@ async function registerSSHKey(): Promise<string> {
 
 async function searchCheapestGpu(minVramMb: number = 14000): Promise<any> {
   // Search for cheapest GPU with enough VRAM for a 7B fp16 model (~14GB)
-  // compute_cap >= 800 = Ampere/Ada (RTX 30xx/40xx, A100) — required for FA2 + vLLM 0.15+
+  // No compute_cap filter — V100 (cap 700), T4 (cap 750), Ampere (cap 800+) all work with vLLM fp16
   const query = {
     "rented": { "eq": false },
     "rentable": { "eq": true },
     "disk_space": { "gte": 40 },
     "dph_total": { "lte": 1.00 },
     "gpu_ram": { "gte": minVramMb },
-    "compute_cap": { "gte": 800 },
   };
 
   const data = await vastApi(

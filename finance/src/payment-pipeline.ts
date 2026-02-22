@@ -6,7 +6,7 @@
  *   2. KYC check (auto-approved for hackathon)
  *   3. Simulate SOL → USDT conversion (1000x demo multiplier)
  *   4. Stripe test-mode PaymentIntent (shows USD charged, no real money)
- *   5. Crusoe VM provisioning (real API or mock fallback)
+ *   5. GPU VM provisioning (GCP or Vast.ai)
  *   6. Inject server config (OpenClaw + vLLM + Qwen)
  *   7. Hand server back to requesting agent
  */
@@ -27,6 +27,9 @@ import type { AgentWallet } from "./wallet.js";
 import { loadWallet } from "./wallet.js";
 import { kycCheck, type KycResult } from "./kyc.js";
 import { provisionVastInstance, type VastInstance } from "./vast-provision.js";
+import { provisionGcpInstance, type GcpInstance } from "./gcp-provision.js";
+
+export type GpuProvider = "vast" | "gcp";
 
 const DEVNET_URL = "https://api.devnet.solana.com";
 
@@ -172,10 +175,14 @@ export async function chargeStripe(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Step 5 — Vast.ai GPU VM provisioning (real T4, real nvidia-smi)
+// Step 5 — GPU VM provisioning (GCP or Vast.ai)
 // ─────────────────────────────────────────────────────────────────────────────
 
-export async function provisionGpu(model: string): Promise<VastInstance> {
+export async function provisionGpu(
+  model: string,
+  provider: GpuProvider = "gcp"
+): Promise<VastInstance | GcpInstance> {
+  if (provider === "gcp") return provisionGcpInstance(model);
   return provisionVastInstance(model);
 }
 
@@ -185,21 +192,20 @@ export async function provisionGpu(model: string): Promise<VastInstance> {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export async function injectServerConfig(
-  instance: VastInstance
+  instance: VastInstance | GcpInstance
 ): Promise<ServerConfig> {
-  // vLLM is already running via the onstart script.
-  // In production: also clone openclaw-config repo and configure the agent pipeline.
-  //
-  // TODO (production):
-  //   ssh root@<host> -p <port> "git clone https://github.com/new-dejima/openclaw-config && ..."
-  //   Then start the task-runner, stock-trader, app-builder scripts.
-
   const apiKey = `sk-dejima-${Math.random().toString(36).slice(2, 14)}`;
 
+  // Normalise across provider shapes
+  const isGcp = "instanceName" in instance;
   return {
-    instanceId: String(instance.instanceId),
-    ip: instance.sshHost,
-    apiEndpoint: instance.apiEndpoint,   // tunnelled localhost endpoint
+    instanceId: isGcp
+      ? (instance as GcpInstance).instanceName
+      : String((instance as VastInstance).instanceId),
+    ip: isGcp
+      ? (instance as GcpInstance).externalIp
+      : (instance as VastInstance).sshHost,
+    apiEndpoint: instance.apiEndpoint,
     apiKey,
     model: instance.model,
     openclawConfig: true,
@@ -232,9 +238,11 @@ export async function agentReproductionPipeline(params: {
   treasuryWallet: AgentWallet;
   solPayment: number;
   model?: string;
+  provider?: GpuProvider;
   agentNotes?: string;
 }): Promise<PipelineResult> {
   const { agentId, agentWallet, treasuryWallet, solPayment } = params;
+  const provider = params.provider ?? "gcp";
   const model = params.model ?? "Qwen/Qwen2.5-7B-Instruct-AWQ";
 
   console.log("\n═══════════════════════════════════════════");
@@ -295,10 +303,10 @@ export async function agentReproductionPipeline(params: {
     stripe = { chargeId: "skipped", amount: conversion.simulatedUsdt, currency: "USD", status: "skipped" };
   }
 
-  // ── Step 5: Vast.ai GPU provisioning — REAL GPU, REAL nvidia-smi ─────────
-  console.log("[5/7] VAST.AI GPU VM PROVISIONED");
+  // ── Step 5: GPU VM provisioning — REAL GPU, REAL nvidia-smi ─────────────
+  console.log(`[5/7] GPU VM PROVISIONED (${provider.toUpperCase()})`);
   console.log(`  Model:    ${model}`);
-  const vast = await provisionGpu(model);
+  const vast = await provisionGpu(model, provider);
   console.log(`  GPU:      ${vast.gpuName}`);
   console.log(`  Instance: ${vast.instanceId}`);
   console.log(`  SSH:      ${vast.sshHost}:${vast.sshPort}`);
