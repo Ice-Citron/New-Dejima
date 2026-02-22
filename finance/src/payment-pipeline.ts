@@ -28,6 +28,7 @@ import { loadWallet } from "./wallet.js";
 import { kycCheck, type KycResult } from "./kyc.js";
 import { provisionVastInstance, type VastInstance } from "./vast-provision.js";
 import { provisionGcpInstance, type GcpInstance } from "./gcp-provision.js";
+import { trackCost, trackRevenue } from "./cost-tracker.js";
 
 export type GpuProvider = "vast" | "gcp";
 
@@ -257,6 +258,17 @@ export async function agentReproductionPipeline(params: {
   console.log(`  Amount:   ${payment.receivedSol} SOL`);
   console.log(`  TX:       ${payment.txSig.slice(0, 12)}...\n`);
 
+  // Paid.ai — track SOL payment as infrastructure cost for this agent
+  const solCostUsd = solPayment * SOL_PRICE_USD;
+  await trackCost({
+    agentId,
+    model: "infrastructure",
+    inputTokens: 0,
+    outputTokens: 0,
+    estimatedCostUsd: solCostUsd,
+    timestamp: new Date().toISOString(),
+  });
+
   // ── Step 2: KYC ─────────────────────────────────────────────────────────
   const kyc = await runKyc(agentId, agentWallet.publicKey);
   console.log(`[2/7] KYC CHECK — ${kyc.approved ? "APPROVED" : "REJECTED"}`);
@@ -314,6 +326,19 @@ export async function agentReproductionPipeline(params: {
   console.log(`  Price:    $${vast.pricePerHour.toFixed(3)}/hr`);
   console.log(`  Status:   ${vast.status}\n`);
 
+  // Paid.ai — track GPU provisioning cost (1hr estimated minimum)
+  const gpuLabel = "instanceName" in vast
+    ? (vast as GcpInstance).gpuType
+    : (vast as VastInstance).gpuName;
+  await trackCost({
+    agentId,
+    model: `gpu:${gpuLabel}`,
+    inputTokens: 0,
+    outputTokens: 0,
+    estimatedCostUsd: vast.pricePerHour,
+    timestamp: new Date().toISOString(),
+  });
+
   // ── Step 6: Inject OpenClaw config (vLLM already started via onstart) ────
   console.log("[6/7] SERVER INJECTED");
   const server = await injectServerConfig(vast);
@@ -329,6 +354,15 @@ export async function agentReproductionPipeline(params: {
   console.log(`  ${childId} receives:`);
   console.log(`    API: ${handoff.serverConfig.apiEndpoint}`);
   console.log(`    Key: ${handoff.serverConfig.apiKey}\n`);
+
+  // Paid.ai — track revenue: New Dejima delivered a server, agent paid in SOL
+  await trackRevenue({
+    agentId,
+    source: "gpu_provisioning",
+    amountUsd: solCostUsd,
+    description: `GPU server delivered to ${childId} — ${gpuLabel} via ${provider.toUpperCase()}`,
+    timestamp: new Date().toISOString(),
+  });
 
   console.log("═══════════════════════════════════════════\n");
 

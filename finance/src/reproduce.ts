@@ -11,6 +11,7 @@ import { getOrCreateWallet } from "./wallet-store.js";
 import { getAgent, registerAgent } from "./agent-registry.js";
 import { agentReproductionPipeline, type PipelineResult } from "./payment-pipeline.js";
 import { TREASURY_AGENT_ID } from "./wallet.js";
+import { trackCost } from "./cost-tracker.js";
 
 // Minimum SOL the parent must hold before reproduction is allowed
 const MIN_BALANCE_TO_REPRODUCE = 0.1;
@@ -93,6 +94,16 @@ export async function reproduce(
   const childWallet = createAgentWallet(childId);
 
   registerAgent(childId, childWallet, model, parentId, parent.generation + 1);
+
+  // Paid.ai — track reproduction as a cost event for the parent agent
+  await trackCost({
+    agentId: parentId,
+    model: "reproduction",
+    inputTokens: 0,
+    outputTokens: 0,
+    estimatedCostUsd: solPayment * 150, // SOL → USD at ~$150/SOL
+    timestamp: new Date().toISOString(),
+  });
 
   return {
     success: true,
