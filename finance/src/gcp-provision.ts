@@ -26,9 +26,9 @@ const GPU_CANDIDATES = [
   { zone: "us-central1-b", machineType: "g2-standard-4", gpuType: "nvidia-l4",        pricePerHour: 0.92 },
   { zone: "us-east1-c",    machineType: "n1-standard-4", gpuType: "nvidia-tesla-t4", pricePerHour: 0.54 },
 ];
-// Deep Learning VM: CUDA 12.1 + Docker + nvidia-container-toolkit pre-installed
-const IMAGE_FAMILY  = "common-cu121-debian-11-py310";
-const IMAGE_PROJECT = "ml-images";
+// Deep Learning VM: CUDA 12.8 + NVIDIA 570 driver pre-installed (Ubuntu 22.04)
+const IMAGE_FAMILY  = "common-cu128-ubuntu-2204-nvidia-570";
+const IMAGE_PROJECT = "deeplearning-platform-release";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -77,19 +77,40 @@ async function createInstance(
   gpuType: string
 ): Promise<void> {
   // Startup script runs as root on first boot.
-  // DL VM image has CUDA drivers, Docker, and nvidia-container-toolkit ready.
+  // DL VM image: deeplearning-platform-release/common-cu128-ubuntu-2204-nvidia-570
+  // Has: CUDA 12.8, NVIDIA 570 driver, Python 3.10
+  // Needs: Docker + nvidia-container-toolkit installed by us
   const startupScript = [
     "#!/bin/bash",
-    "set -e",
-    "export PATH=$PATH:/usr/bin:/usr/local/cuda/bin",
-    "# Wait for NVIDIA drivers to fully load after boot",
-    "sleep 60",
-    "# Configure nvidia-container-toolkit for Docker GPU support",
-    "nvidia-ctk runtime configure --runtime=docker 2>/dev/null || true",
-    "systemctl restart docker 2>/dev/null || true",
-    "sleep 10",
-    "/usr/bin/nvidia-smi | tee /tmp/nvidia-smi.txt",
-    "echo '[dejima] nvidia-smi done, starting vLLM Docker container...'",
+    "exec > /tmp/startup.log 2>&1",
+    "set -ex",
+    "export PATH=$PATH:/usr/bin:/usr/local/bin:/usr/local/cuda/bin",
+    "",
+    "echo '[dejima] Waiting for GPU drivers...'",
+    "sleep 30",
+    "nvidia-smi | tee /tmp/nvidia-smi.txt",
+    "",
+    "# Install Docker if not present",
+    "if ! command -v docker &>/dev/null; then",
+    "  echo '[dejima] Installing Docker...'",
+    "  curl -fsSL https://get.docker.com | sh",
+    "fi",
+    "",
+    "# Install nvidia-container-toolkit",
+    "if ! command -v nvidia-ctk &>/dev/null; then",
+    "  echo '[dejima] Installing nvidia-container-toolkit...'",
+    "  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg",
+    "  curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | tee /etc/apt/sources.list.d/nvidia-container-toolkit.list",
+    "  apt-get update -qq",
+    "  apt-get install -y -qq nvidia-container-toolkit",
+    "fi",
+    "",
+    "# Configure Docker for GPU and restart",
+    "nvidia-ctk runtime configure --runtime=docker",
+    "systemctl restart docker",
+    "sleep 5",
+    "",
+    "echo '[dejima] Starting vLLM Docker container...'",
     "docker run -d \\",
     "  --gpus all \\",
     "  -p 8000:8000 \\",
@@ -103,6 +124,8 @@ async function createInstance(
     "  --port 8000 \\",
     "  --host 0.0.0.0 \\",
     "  --enforce-eager 2>&1 | tee /tmp/vllm.log",
+    "",
+    "echo '[dejima] Startup script complete.'",
   ].join("\n");
 
   // Write startup script to a temp file (avoids shell quoting issues)
@@ -305,7 +328,7 @@ export async function provisionGcpInstance(
     try {
       nvidiaSmiOutput = sshRun(
         instanceName, chosenZone,
-        "sudo /usr/bin/nvidia-smi || /usr/bin/nvidia-smi || nvidia-smi"
+        "nvidia-smi || /usr/bin/nvidia-smi || /usr/local/cuda/bin/nvidia-smi || sudo nvidia-smi"
       );
       console.log("\n" + nvidiaSmiOutput);
       break;
