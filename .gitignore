@@ -1,6 +1,12 @@
 # Heavy Repo
 openclaw/
 
+# APK binaries (too large for GitHub)
+apks/*.apk
+
+# API keys
+.api-keys
+
 # MacOS Security Files
 .DS_Store
 
