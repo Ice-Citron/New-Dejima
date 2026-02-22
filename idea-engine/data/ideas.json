@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-02-21T19:59:18.502169+00:00",
-  "total": 20,
+  "updated_at": "2026-02-22T00:29:54.549127+00:00",
+  "total": 29,
   "ideas": [
     {
       "name": "DevVault",
@@ -420,6 +420,195 @@
       "market_signals": "Moderate engagement (34 upvotes, 51 comments) suggests interest. High comment ratio indicates people are engaging with the concept and likely sharing similar experiences.",
       "source_post_id": "",
       "added_at": "2026-02-21T19:47:41.976497+00:00",
+      "status": "new"
+    },
+    {
+      "name": "AppScaffold",
+      "description": "Mobile app development platform that provides pre-built backend components (auth, database, APIs) with visual configuration. Developers can quickly scaffold mobile apps without writing repetitive infrastructure code.",
+      "key_features": [
+        "Visual backend builder with drag-drop components",
+        "Pre-built auth flows and user management",
+        "Database schema designer with automatic API generation",
+        "Real-time sync between mobile app and backend",
+        "Export to native mobile frameworks (React Native, Flutter)"
+      ],
+      "monetization": "Freemium SaaS with usage-based pricing for API calls and storage",
+      "complexity": "complex",
+      "problem": "Developers repeatedly implement the same basic backend infrastructure (auth, database, API, cron jobs) for every new app they build, wasting time on solved problems instead of focusing on unique features.",
+      "target_audience": "Full-stack developers, indie hackers, and small development teams building web/mobile applications",
+      "confidence": 4,
+      "reasoning": "While there's clear developer demand for reducing repetitive work, this is a B2B developer tool rather than a consumer mobile app. The market is crowded with similar solutions (Firebase, Supabase, etc.) and requires significant technical expertise to execute well.",
+      "market_signals": "Moderate engagement (72 upvotes, 44 comments) on HN, but this is a technical solution for developers rather than end-users",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "PaymentSync",
+      "description": "Mobile dashboard app that connects to Stripe and other payment processors to provide real-time payment analytics, customer insights, and financial reporting without complex webhook setup.",
+      "key_features": [
+        "Real-time payment notifications and alerts",
+        "Visual analytics dashboard for revenue tracking",
+        "Customer payment history and insights",
+        "Export data to accounting software",
+        "Multi-payment processor support"
+      ],
+      "monetization": "Monthly subscription tiers based on transaction volume",
+      "complexity": "medium",
+      "problem": "Developers struggle with complex Stripe webhook implementations and want simpler ways to sync payment data to their own databases for analytics and reporting.",
+      "target_audience": "SaaS founders, e-commerce developers, and small business owners using Stripe for payments",
+      "confidence": 5,
+      "reasoning": "There's demand for simplified payment data management, but the target market is quite niche (developers/business owners using Stripe). The mobile app angle could work for business owners who want payment insights on-the-go, but faces competition from existing analytics tools.",
+      "market_signals": "Decent technical engagement (66 upvotes, 30 comments), but limited to developers using Stripe",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "HomeQuick",
+      "description": "Streamlined mobile app for instant smart home control with customizable quick actions, widgets, and automation shortcuts. Focuses on speed and efficiency over comprehensive features.",
+      "key_features": [
+        "Customizable home screen widgets for instant device control",
+        "Quick action shortcuts for common device combinations",
+        "Voice control integration with custom commands",
+        "Geofencing for location-based automation",
+        "Cross-platform support (HomeKit, Home Assistant, etc.)"
+      ],
+      "monetization": "One-time premium app purchase with optional pro features subscription",
+      "complexity": "medium",
+      "problem": "Smart home enthusiasts with many devices find the default HomeKit app too slow and cumbersome for quick device control and adjustments.",
+      "target_audience": "Smart home power users, home automation enthusiasts, and tech-savvy homeowners with multiple HomeKit devices",
+      "confidence": 6,
+      "reasoning": "Clear pain point from engaged users, and smart home market is growing. However, limited to HomeKit ecosystem initially and faces competition from existing home automation apps. The 'quick control' angle could differentiate if executed well.",
+      "market_signals": "Good engagement from target audience (57 upvotes, 48 comments), with specific pain point identified by power user",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "APIBench",
+      "description": "Mobile app for developers to monitor, benchmark, and optimize their API performance in real-time. Provides insights into response times, throughput, and bottlenecks across different frameworks.",
+      "key_features": [
+        "Real-time API performance monitoring",
+        "Framework performance comparisons",
+        "Bottleneck identification and suggestions",
+        "Load testing tools with mobile control",
+        "Performance alerts and notifications"
+      ],
+      "monetization": "Freemium with premium monitoring features and higher API limits",
+      "complexity": "complex",
+      "problem": "JavaScript backend frameworks are slow and developers need better performance without sacrificing development experience or switching to lower-level languages.",
+      "target_audience": "Backend developers, API builders, and performance-conscious web developers",
+      "confidence": 3,
+      "reasoning": "Highly technical topic with narrow appeal to performance-focused backend developers. While performance monitoring has value, this is primarily a developer tool rather than a consumer mobile app opportunity.",
+      "market_signals": "Lower engagement (54 upvotes, 10 comments), very technical topic with limited mass appeal",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "AgentOrchestra",
+      "description": "Mobile app that allows users to create, monitor, and manage multi-agent AI workflows for complex tasks like content creation, data analysis, or business process automation.",
+      "key_features": [
+        "Visual workflow builder for multi-agent tasks",
+        "Real-time progress monitoring and intervention",
+        "Pre-built agent templates for common use cases",
+        "Integration with popular AI APIs (OpenAI, Claude, etc.)",
+        "Results export and sharing capabilities"
+      ],
+      "monetization": "Usage-based pricing for AI API calls plus subscription for advanced features",
+      "complexity": "complex",
+      "problem": "Single AI agents fail at complex, long-running tasks by getting stuck in loops, stalling, or producing non-functional code, requiring better coordination mechanisms.",
+      "target_audience": "AI researchers, developers using LLMs for code generation, and businesses automating complex workflows with AI",
+      "confidence": 4,
+      "reasoning": "Interesting technical innovation but very early-stage market. Multi-agent AI coordination is complex and the mobile interface may not be ideal for managing sophisticated AI workflows. Better suited as a web platform than mobile app.",
+      "market_signals": "Moderate technical engagement (53 upvotes, 39 comments), but cutting-edge AI topic with uncertain market readiness",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "CliKeep",
+      "description": "Mobile companion app for developers to securely store and quickly access operational data on-the-go. Syncs with desktop tools and provides emergency access to critical infrastructure information.",
+      "key_features": [
+        "Biometric unlock for quick access",
+        "QR code sharing for secure data transfer",
+        "Offline mode with encrypted storage",
+        "Integration with popular DevOps tools",
+        "Team sharing with role-based permissions"
+      ],
+      "monetization": "B2B SaaS pricing starting at $10/user/month for teams",
+      "complexity": "medium",
+      "problem": "DevOps engineers and developers need quick, secure access to operational data like SSH passwords, IP addresses, and CLI commands, but current solutions (clipboard managers, password managers, text files) are either too bloated, too slow, or insecure for their fast-paced workflows.",
+      "target_audience": "DevOps engineers, system administrators, software developers who frequently use command-line tools and manage infrastructure",
+      "confidence": 6,
+      "reasoning": "While there's clear demand from technical users, the market is crowded with existing solutions. The mobile use case is weaker since DevOps work is primarily desktop-based. However, the specific focus on operational data rather than general password management could be a viable niche.",
+      "market_signals": "22 upvotes on HN with positive engagement from technical audience. Creator built it to solve their own pain point, indicating real need exists.",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "CoreAI",
+      "description": "A mobile app that identifies specific software features that could be genuinely replaced by AI and provides AI-native alternatives. Focus on workflow transformation rather than feature addition.",
+      "key_features": [
+        "AI-powered workflow analysis",
+        "Feature replacement recommendations",
+        "Integration with popular business tools",
+        "Performance comparison metrics",
+        "Custom AI workflow builder"
+      ],
+      "monetization": "B2B consulting model - $50-200/hour for workflow optimization",
+      "complexity": "complex",
+      "problem": "AI has been added as supplementary features to existing software rather than replacing core functionalities, leading to bloated applications without fundamental transformation of workflows.",
+      "target_audience": "Software developers, product managers, business users frustrated with AI integration approaches",
+      "confidence": 3,
+      "reasoning": "This is more of an industry observation than a specific user problem. The post doesn't indicate clear demand for a solution, and the problem is too abstract to translate into a viable mobile app. The discussion is intellectual rather than practical.",
+      "market_signals": "21 upvotes and 23 comments suggesting engagement with the topic, but discussion is more philosophical than indicating specific pain points.",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "ADHDPlanner",
+      "description": "Comprehensive planning app designed specifically for ADHD brains with visual cues, realistic scheduling, and executive function support.",
+      "key_features": [
+        "Visual capacity indicators",
+        "Dopamine-friendly progress tracking",
+        "Customizable reminder systems",
+        "Energy level tracking and planning",
+        "Integration with calendar apps"
+      ],
+      "monetization": "Subscription model $6.99/month with free trial",
+      "complexity": "medium",
+      "problem": "People with ADHD struggle with time-blindness and unrealistic task planning, often overestimating what they can accomplish in a day, leading to stress and incomplete work.",
+      "target_audience": "Adults with ADHD, people with executive function challenges, productivity-focused individuals who struggle with time estimation",
+      "confidence": 8,
+      "reasoning": "Strong confidence because: 1) ADHD affects millions and is underserved by mainstream productivity apps, 2) Creator has personal validation, 3) Visual time management addresses a core ADHD challenge, 4) Clear monetization path through subscription model, 5) Mobile-first approach suits the target audience's needs for on-the-go planning.",
+      "market_signals": "Strong personal validation from creator who built it for themselves. ADHD community is underserved and actively seeks solutions. Low comment count but high engagement quality.",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
+      "status": "new"
+    },
+    {
+      "name": "SafeSound",
+      "description": "A protective audio app that monitors and limits dangerous volume spikes in real-time across all phone audio, preventing hearing damage from unexpected loud sounds.",
+      "key_features": [
+        "Real-time audio monitoring and limiting",
+        "Customizable volume thresholds",
+        "Emergency volume override",
+        "Integration with phone and app audio",
+        "Hearing damage incident logging"
+      ],
+      "monetization": "One-time purchase $4.99 or freemium with premium features",
+      "complexity": "complex",
+      "problem": "Phone users can experience sudden, dangerous volume spikes from automated systems or apps that can cause immediate hearing damage without warning.",
+      "target_audience": "All smartphone users, particularly those who frequently take calls or use voice-activated systems",
+      "confidence": 5,
+      "reasoning": "Medium confidence because while hearing protection is important, the technical complexity is high (requires deep OS integration), and platform restrictions may limit functionality. Apple/Google already have some protections built-in. However, the safety angle and universal applicability provide market potential. The incident described shows real need exists.",
+      "market_signals": "Moderate engagement (13 upvotes, 5 comments) on a serious safety issue. Hearing damage is a legitimate concern with widespread impact potential.",
+      "source_post_id": "",
+      "added_at": "2026-02-22T00:29:54.545979+00:00",
       "status": "new"
     }
   ]

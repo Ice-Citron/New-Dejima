@@ -2,14 +2,55 @@
   "agents": {
     "defaults": {
       "workspace": "C:\\Users\\nahom\\AppData\\Local\\Temp\\dejima-workspace",
-      "model": { "primary": "anthropic/claude-opus-4-6" },
-      "imageModel": { "primary": "google/gemini-2.0-flash" }
-    }
+      "model": {
+        "primary": "anthropic/claude-opus-4-6"
+      },
+      "imageModel": {
+        "primary": "google/gemini-2.5-flash",
+        "fallbacks": [
+          "google/gemini-3-flash-preview",
+          "anthropic/claude-opus-4-6"
+        ]
+      },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "heartbeat": {
+        "every": "30m"
+      }
+    },
+    "list": [
+      {
+        "id": "dev",
+        "default": true,
+        "workspace": "C:\\Users\\nahom\\AppData\\Local\\Temp\\dejima-workspace"
+      }
+    ]
   },
   "skills": {
+    "load": {
+      "watch": true,
+      "watchDebounceMs": 250
+    },
     "entries": {
-      "android-app-builder": { "enabled": true }
+      "android-app-builder": {
+        "enabled": true
+      },
+      "idea-generator": {
+        "enabled": true
+      }
     }
   },
-  "gateway": { "port": 18789, "mode": "local" }
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto"
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local"
+  }
 }
