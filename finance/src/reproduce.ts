@@ -3,7 +3,7 @@
  *
  * Instead of splitting SOL 50/50 with a child wallet, the agent pays
  * New Dejima's treasury in SOL. New Dejima then runs the full payment
- * pipeline: KYC → conversion → Stripe → Crusoe provisioning → server
+ * pipeline: KYC → conversion → Stripe → GCP GPU provisioning → server
  * handoff. The "child" is the new agent that gets a running server.
  */
 import { getBalance } from "./wallet.js";
@@ -50,7 +50,7 @@ export async function canReproduce(
 
 /**
  * Reproduce: parent agent pays New Dejima treasury → full pipeline runs →
- * child agent gets a provisioned Crusoe server.
+ * child agent gets a provisioned GCP GPU server.
  *
  * Keeps the same exported signature so existing callers don't break.
  */
