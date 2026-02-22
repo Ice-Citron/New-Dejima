@@ -45,7 +45,11 @@
         { "pattern": "screencap" },
         { "pattern": "sh" },
         { "pattern": "bash" },
-        { "pattern": "zsh" }
+        { "pattern": "zsh" },
+        { "pattern": "ffmpeg" },
+        { "pattern": "ffprobe" },
+        { "pattern": "python3" },
+        { "pattern": "python" }
       ]
     },
     "*": {
@@ -71,7 +75,11 @@
         { "pattern": "sleep" },
         { "pattern": "java" },
         { "pattern": "sh" },
-        { "pattern": "bash" }
+        { "pattern": "bash" },
+        { "pattern": "ffmpeg" },
+        { "pattern": "ffprobe" },
+        { "pattern": "python3" },
+        { "pattern": "python" }
       ]
     }
   }

@@ -55,6 +55,13 @@
           "ANDROID_HOME": "/Users/administrator/Library/Android/sdk",
           "PATH": "/Users/administrator/Library/Android/sdk/platform-tools:/Users/administrator/Library/Android/sdk/emulator:/Users/administrator/Library/Android/sdk/cmdline-tools/latest/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
         }
+      },
+      "ai-video-creator": {
+        "enabled": true,
+        "env": {
+          "VIDEO_OUTPUT_DIR": "/tmp/dejima-videos",
+          "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        }
       }
     }
   },
