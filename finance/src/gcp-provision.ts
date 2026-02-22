@@ -80,8 +80,15 @@ async function createInstance(
   // DL VM image has CUDA drivers, Docker, and nvidia-container-toolkit ready.
   const startupScript = [
     "#!/bin/bash",
-    "sleep 15",
-    "nvidia-smi | tee /tmp/nvidia-smi.txt",
+    "set -e",
+    "export PATH=$PATH:/usr/bin:/usr/local/cuda/bin",
+    "# Wait for NVIDIA drivers to fully load after boot",
+    "sleep 60",
+    "# Configure nvidia-container-toolkit for Docker GPU support",
+    "nvidia-ctk runtime configure --runtime=docker 2>/dev/null || true",
+    "systemctl restart docker 2>/dev/null || true",
+    "sleep 10",
+    "/usr/bin/nvidia-smi | tee /tmp/nvidia-smi.txt",
     "echo '[dejima] nvidia-smi done, starting vLLM Docker container...'",
     "docker run -d \\",
     "  --gpus all \\",
@@ -289,19 +296,25 @@ export async function provisionGcpInstance(
   await waitForSSH(instanceName, chosenZone);
 
   // nvidia-smi — prove real GPU
+  // Wait extra time for NVIDIA drivers to fully initialise after boot
+  console.log("  [gcp] Waiting 60s for GPU drivers to initialise...");
+  await new Promise(r => setTimeout(r, 60_000));
   console.log("  [gcp] Running nvidia-smi...");
   let nvidiaSmiOutput = "";
-  for (let attempt = 1; attempt <= 4; attempt++) {
+  for (let attempt = 1; attempt <= 6; attempt++) {
     try {
-      nvidiaSmiOutput = sshRun(instanceName, chosenZone, "nvidia-smi");
+      nvidiaSmiOutput = sshRun(
+        instanceName, chosenZone,
+        "sudo /usr/bin/nvidia-smi || /usr/bin/nvidia-smi || nvidia-smi"
+      );
       console.log("\n" + nvidiaSmiOutput);
       break;
     } catch (err: any) {
-      if (attempt < 4) {
-        process.stdout.write(`  [gcp] SSH attempt ${attempt} failed, retrying...`);
-        await new Promise(r => setTimeout(r, 8_000));
+      if (attempt < 6) {
+        process.stdout.write(`  [gcp] nvidia-smi attempt ${attempt} failed, retrying in 15s...`);
+        await new Promise(r => setTimeout(r, 15_000));
       } else {
-        nvidiaSmiOutput = `[SSH failed after ${attempt} attempts: ${err.message}]`;
+        nvidiaSmiOutput = `[nvidia-smi failed after ${attempt} attempts: ${err.message}]`;
         console.warn(`\n  [gcp] nvidia-smi failed: ${err.message}`);
       }
     }

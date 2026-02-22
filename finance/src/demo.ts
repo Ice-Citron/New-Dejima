@@ -30,6 +30,7 @@ const SOL_PAYMENT = 0.49;
 // Track GPU instance for cleanup on exit
 let vastInstanceId: number | null = null;
 let gcpInstanceName: string | null = null;
+let gcpInstanceZone: string | null = null;
 
 async function cleanup() {
   closeSSHTunnel();
@@ -42,11 +43,12 @@ async function cleanup() {
     vastInstanceId = null;
   }
   if (gcpInstanceName) {
-    console.log(`\n[cleanup] Destroying GCP instance ${gcpInstanceName}...`);
-    try { await destroyGcpInstance(gcpInstanceName); } catch (e: any) {
+    console.log(`\n[cleanup] Destroying GCP instance ${gcpInstanceName} (${gcpInstanceZone})...`);
+    try { await destroyGcpInstance(gcpInstanceName, gcpInstanceZone ?? undefined); } catch (e: any) {
       console.warn(`[cleanup] GCP destroy failed: ${e.message}`);
     }
     gcpInstanceName = null;
+    gcpInstanceZone = null;
   }
 }
 
@@ -149,7 +151,9 @@ async function main() {
       if (PROVIDER === "vast" && "instanceId" in result.vast) {
         vastInstanceId = (result.vast as import("./vast-provision.js").VastInstance).instanceId as number;
       } else if (PROVIDER === "gcp" && "instanceName" in result.vast) {
-        gcpInstanceName = (result.vast as import("./gcp-provision.js").GcpInstance).instanceName;
+        const gcpInst = result.vast as import("./gcp-provision.js").GcpInstance;
+        gcpInstanceName = gcpInst.instanceName;
+        gcpInstanceZone = gcpInst.zone;
       }
     }
 
