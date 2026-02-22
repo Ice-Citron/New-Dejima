@@ -1,6 +1,6 @@
 # Project Status — New Dejima
 
-**Last updated:** 2026-02-21
+**Last updated:** 2026-02-22
 
 ## What's Working
 
@@ -39,6 +39,32 @@ scrape → analyze → rank → build
 #### OpenClaw Skill
 - `config/openclaw/skills/idea-generator/SKILL.md` — defines the idea discovery pipeline as an OpenClaw skill
 
+### Dropship Engine (Autonomous Store Builder)
+- **Status:** Built, ready for testing
+- **Location:** `dropship-engine/`
+- **Config:** `dropship-engine/.env` (Anthropic API key — same as idea-engine)
+- **Data:** `dropship-engine/data/` (niches, products, store configs)
+- **Storefront:** Generated via Lovable (no API key needed — URL-based)
+
+#### Pipeline
+```
+research → analyze → source → build-store
+```
+- `python -m src.cli research` — scrapes Google Trends, Reddit, Google for trending products
+- `python -m src.cli analyze` — Claude identifies profitable niches from research data
+- `python -m src.cli source` — finds supplier prices (AliExpress), calculates real margins
+- `python -m src.cli build-store` — generates a full storefront via Lovable
+- `python -m src.cli evaluate "product name"` — quick-evaluate a single product idea
+- `python -m src.cli status` — show pipeline summary
+- `python -m src.cli pipeline` — runs all 4 steps end-to-end autonomously
+
+#### How It Works
+1. Scrapes trending products from Google Trends, Reddit (r/dropshipping, r/ecommerce, etc.)
+2. Claude analyzes trends and identifies the most promising niches (demand, competition, margins)
+3. Searches AliExpress for supplier pricing, calculates real margins after COGS, shipping, Stripe fees
+4. Generates a detailed store prompt and launches Lovable to build a complete React storefront
+5. Store includes product catalog, cart, checkout (demo mode), admin panel, responsive design
+
 ## Architecture
 
 ```
@@ -52,6 +78,16 @@ New-Dejima/
 │   │   ├── builder.py          # Bridge to OpenClaw app builder
 │   │   └── cli.py              # CLI entry point
 │   ├── data/                   # Scrape results + ranked ideas
+│   └── .env                    # API keys (gitignored)
+├── dropship-engine/       # Autonomous dropshipping store builder (Python)
+│   ├── src/
+│   │   ├── researcher.py       # Google Trends + Reddit product research
+│   │   ├── analyzer.py         # Claude-based niche analysis
+│   │   ├── sourcer.py          # AliExpress sourcing + margin calculator
+│   │   ├── store_builder.py    # Lovable prompt generation + store launch
+│   │   ├── storage.py          # JSON store for niches, products, stores
+│   │   └── cli.py              # CLI entry point
+│   ├── data/                   # Research results, niches, products
 │   └── .env                    # API keys (gitignored)
 ├── config/openclaw/
 │   ├── openclaw.json           # Gateway + agent config
@@ -74,7 +110,7 @@ New-Dejima/
 - Android SDK (for app building)
 - Anthropic API key with credits
 
-### Start the full pipeline
+### Start the idea engine pipeline
 ```powershell
 # Terminal 1: Gateway
 cd C:\Users\nahom\New-Dejima
@@ -86,6 +122,14 @@ cd C:\Users\nahom\New-Dejima\idea-engine
 python -m src.cli pipeline
 ```
 
+### Start the dropship engine
+```powershell
+cd C:\Users\nahom\New-Dejima\dropship-engine
+pip install -r requirements.txt
+python -m src.cli pipeline              # full auto: research → analyze → source → build
+python -m src.cli pipeline --dry-run    # see the store prompt without launching Lovable
+```
+
 ### Install APKs
 ```powershell
 adb devices                    # list connected devices
@@ -95,6 +139,8 @@ adb -s <DEVICE> install <APK>  # install to specific device
 ## What's Not Done Yet
 - Google AI API key (Gemini) not configured — vision QA falls back to Claude
 - Android SDK paths in `openclaw.json` still point to macOS paths (builds work via emulator on Windows)
-- Marketing agent (Track C from HackEurope plan) — not started
 - App Store publishing pipeline — not started
 - User feedback/iteration loop in idea engine — not implemented
+- Treasury module (crypto wallet integration) — planned next
+- Survival kernel (meta-brain for capital allocation across strategies) — planned
+- Prediction markets strategy (Polymarket integration) — planned

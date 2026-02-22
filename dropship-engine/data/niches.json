@@ -1,0 +1,546 @@
+{
+  "updated_at": "2026-02-22T04:48:40.270954+00:00",
+  "total": 27,
+  "niches": [
+    {
+      "name": "MMA Training Gear",
+      "category": "Fitness",
+      "description": "Home training equipment and accessories for MMA enthusiasts inspired by popular fighters and the growing interest in mixed martial arts.",
+      "demand_signals": "Multiple trending MMA fighter searches (Khamzat Chimaev, Israel Adesanya, Dricus du Plessis) showing strong fan engagement",
+      "competition_level": "medium",
+      "estimated_margin": "50-70%",
+      "target_audience": "MMA fans aged 18-45, fitness enthusiasts, martial arts practitioners",
+      "risk_factors": "Safety concerns with training equipment, potential trademark issues with fighter merchandise, niche market size",
+      "confidence": 8,
+      "sample_products": [
+        "Heavy bag training gloves",
+        "Grappling dummy for ground training",
+        "MMA training mat puzzle pieces",
+        "Speed and agility training ladder",
+        "Resistance bands for fighter conditioning"
+      ],
+      "added_at": "2026-02-22T04:25:18.524113+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Recovery Products",
+      "category": "Health",
+      "description": "Recovery and wellness products targeting active individuals and sports enthusiasts for post-workout care and injury prevention.",
+      "demand_signals": "Athletic trends suggest market interested in sports performance and recovery; growing wellness market",
+      "competition_level": "medium",
+      "estimated_margin": "55-75%",
+      "target_audience": "Athletes, fitness enthusiasts aged 18-45, people with active lifestyles",
+      "risk_factors": "Health claims regulations, product efficacy expectations, competition from established brands",
+      "confidence": 8,
+      "sample_products": [
+        "Muscle massage roller balls",
+        "Compression therapy sleeves",
+        "Ice pack wraps for joints",
+        "Foam rollers with textured surfaces",
+        "Kinesiology tape rolls"
+      ],
+      "added_at": "2026-02-22T04:25:18.524113+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Basketball Training Equipment",
+      "category": "Fitness",
+      "description": "Portable basketball training aids and skill development tools for players looking to improve their game at home or in limited spaces.",
+      "demand_signals": "Multiple basketball-related trending searches (BYU, Utah State, UCF basketball), indicating high interest in basketball content and related products",
+      "competition_level": "medium",
+      "estimated_margin": "45-65%",
+      "target_audience": "Basketball players aged 12-35, parents of young athletes, fitness enthusiasts",
+      "risk_factors": "Seasonal demand fluctuations, quality control issues with training equipment, shipping costs for bulky items",
+      "confidence": 7,
+      "sample_products": [
+        "Portable basketball shooting trainer arc",
+        "Dribbling training cones and agility ladder set",
+        "Basketball return training net",
+        "Shooting form training straps",
+        "Mini portable basketball hoop for doors"
+      ],
+      "added_at": "2026-02-22T04:25:18.524113+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Home Fitness Equipment",
+      "category": "Fitness",
+      "description": "Compact and versatile fitness equipment for home workouts, appealing to the sports-interested demographic seeking convenient training solutions.",
+      "demand_signals": "Sports trends indicate fitness interest; home fitness market continues growing post-pandemic",
+      "competition_level": "high",
+      "estimated_margin": "35-55%",
+      "target_audience": "Fitness enthusiasts aged 20-50, busy professionals, apartment dwellers",
+      "risk_factors": "Saturated market, quality control challenges, high return rates for defective items",
+      "confidence": 7,
+      "sample_products": [
+        "Foldable pull-up bars",
+        "Resistance band sets with door anchors",
+        "Adjustable dumbbells",
+        "Yoga mats with alignment guides",
+        "Balance training boards"
+      ],
+      "added_at": "2026-02-22T04:25:18.524113+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Fan Accessories",
+      "category": "Lifestyle",
+      "description": "Personalized and trending accessories for basketball and MMA fans to show support for their favorite teams and fighters.",
+      "demand_signals": "High search volume for specific athletes and teams suggests strong fan loyalty and merchandise demand",
+      "competition_level": "high",
+      "estimated_margin": "40-60%",
+      "target_audience": "Sports fans aged 16-50, gift buyers, collectors",
+      "risk_factors": "Licensing requirements, trend dependency, seasonal sales fluctuations",
+      "confidence": 6,
+      "sample_products": [
+        "Custom team logo phone cases",
+        "LED sports team signs",
+        "Fighter-inspired workout shirts",
+        "Team color LED strip lights",
+        "Sports-themed car accessories"
+      ],
+      "added_at": "2026-02-22T04:25:18.524113+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Gaming Chair Accessories",
+      "category": "Tech",
+      "description": "Comfort and ergonomic accessories for gaming chairs, targeting the overlap between sports viewing and gaming audiences.",
+      "demand_signals": "Sports fans often engage in long viewing sessions and gaming; ergonomic product demand growing",
+      "competition_level": "medium",
+      "estimated_margin": "50-70%",
+      "target_audience": "Gamers aged 16-35, sports fans who watch long games, remote workers",
+      "risk_factors": "Compatibility issues with different chair models, comfort expectations vary widely",
+      "confidence": 6,
+      "sample_products": [
+        "Lumbar support cushions",
+        "Armrest padding upgrades",
+        "Cup holder attachments",
+        "Headrest pillows with cooling gel",
+        "Cable management clips for chairs"
+      ],
+      "added_at": "2026-02-22T04:25:18.524113+00:00",
+      "status": "new"
+    },
+    {
+      "name": "MMA Training Equipment",
+      "category": "Fitness",
+      "description": "Portable and affordable MMA training gear capitalizing on UFC fighter popularity trends. High engagement from combat sports enthusiasts seeking home training solutions.",
+      "demand_signals": "Multiple UFC fighters trending (Khamzat Chimaev, Israel Adesanya, Dricus du Plessis, Dillon Danis), growing home fitness market, active MMA communities online",
+      "competition_level": "medium",
+      "estimated_margin": "45-65%",
+      "target_audience": "MMA fans aged 18-35, fitness enthusiasts, martial arts practitioners",
+      "risk_factors": "Seasonal demand spikes around UFC events, potential safety/quality concerns, saturated on Amazon",
+      "confidence": 7,
+      "sample_products": [
+        "Portable heavy bags with stands",
+        "MMA gloves and hand wraps sets",
+        "Grappling dummies",
+        "Focus mitts and pads",
+        "MMA training mats"
+      ],
+      "added_at": "2026-02-22T04:27:07.341983+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Athletic Recovery Products",
+      "category": "Health",
+      "description": "Recovery and wellness products targeting serious athletes inspired by professional sports trends. Growing awareness of athlete wellness and recovery importance.",
+      "demand_signals": "Professional athlete influence on recovery trends, growing wellness market, fitness community discussions about recovery",
+      "competition_level": "medium",
+      "estimated_margin": "55-75%",
+      "target_audience": "Serious athletes, fitness enthusiasts, people with active lifestyles aged 20-40",
+      "risk_factors": "Health claims regulations, quality control important, some items require FDA considerations",
+      "confidence": 7,
+      "sample_products": [
+        "Muscle recovery massage guns",
+        "Compression therapy sleeves",
+        "Ice bath accessories",
+        "Foam rollers with unique designs",
+        "Recovery drink shaker bottles"
+      ],
+      "added_at": "2026-02-22T04:27:07.341983+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Basketball Training Accessories",
+      "category": "Sports",
+      "description": "Basketball skill development tools targeting college basketball fans and amateur players. Strong seasonal demand during college basketball season.",
+      "demand_signals": "Multiple college basketball teams trending (BYU, Utah State, UCF), March Madness season approaching, active basketball communities",
+      "competition_level": "medium",
+      "estimated_margin": "40-55%",
+      "target_audience": "College basketball fans, youth players, parents of young athletes, coaches",
+      "risk_factors": "Highly seasonal demand, shipping costs for larger items, established sports retailers",
+      "confidence": 6,
+      "sample_products": [
+        "Shooting sleeves and arm bands",
+        "Portable basketball rebounders",
+        "Dribbling training cones",
+        "Basketball training gloves",
+        "Agility ladder sets"
+      ],
+      "added_at": "2026-02-22T04:27:07.341983+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Home Gym Storage Solutions",
+      "category": "Home",
+      "description": "Organizational products for home gyms and sports equipment, capitalizing on continued home fitness trends and equipment accumulation.",
+      "demand_signals": "Continued home fitness adoption, sports equipment ownership growth, organization trend on social media",
+      "competition_level": "low",
+      "estimated_margin": "45-60%",
+      "target_audience": "Home gym owners, apartment dwellers, sports equipment enthusiasts aged 25-45",
+      "risk_factors": "Shipping costs for larger items, assembly requirements, space limitations in target market",
+      "confidence": 6,
+      "sample_products": [
+        "Wall-mounted basketball storage racks",
+        "Multi-sport equipment organizers",
+        "Compact weight storage solutions",
+        "Sports gear duffel bag organizers",
+        "Ceiling-mounted pulley storage systems"
+      ],
+      "added_at": "2026-02-22T04:27:07.341983+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Performance Monitoring",
+      "category": "Tech",
+      "description": "Affordable tech gadgets for tracking athletic performance, appealing to amateur athletes inspired by professional sports analytics.",
+      "demand_signals": "Growing interest in sports analytics, wearable tech adoption, performance tracking apps popularity",
+      "competition_level": "medium",
+      "estimated_margin": "35-50%",
+      "target_audience": "Amateur athletes, fitness trackers users, coaches, sports enthusiasts aged 18-40",
+      "risk_factors": "Technical support requirements, battery life expectations, accuracy concerns, fast-moving tech landscape",
+      "confidence": 6,
+      "sample_products": [
+        "Shot tracking basketball sensors",
+        "Punch speed measurement devices",
+        "Agility timing gates",
+        "Heart rate monitoring chest straps",
+        "Sports action cameras and mounts"
+      ],
+      "added_at": "2026-02-22T04:27:07.341983+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Fan Memorabilia",
+      "category": "Home",
+      "description": "Customizable and trendy fan merchandise for basketball and MMA enthusiasts. Leverages emotional connection to trending athletes and teams.",
+      "demand_signals": "High search volume for specific athletes and teams, strong fan engagement on social media, collectibles market growth",
+      "competition_level": "high",
+      "estimated_margin": "50-70%",
+      "target_audience": "Sports fans aged 16-45, collectors, gift buyers",
+      "risk_factors": "Licensing issues, trend dependency, quality expectations, copyright concerns",
+      "confidence": 5,
+      "sample_products": [
+        "Custom team wall art and posters",
+        "Player-themed phone cases",
+        "Sports-themed LED neon signs",
+        "Team logo car accessories",
+        "Vintage-style sports prints"
+      ],
+      "added_at": "2026-02-22T04:27:07.341983+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Athlete Recovery Products",
+      "category": "Health",
+      "description": "Recovery and wellness products for athletes and fitness enthusiasts. Interest in specific athletes suggests market awareness of performance and recovery needs.",
+      "demand_signals": "Professional athlete trending suggests interest in performance optimization and recovery methods",
+      "competition_level": "medium",
+      "estimated_margin": "55-75%",
+      "target_audience": "Athletes, fitness enthusiasts, weekend warriors, sports medicine practitioners",
+      "risk_factors": "Health claims regulations, quality expectations, customer education needed",
+      "confidence": 8,
+      "sample_products": [
+        "Compression therapy devices",
+        "Ice bath accessories",
+        "Recovery foam rollers",
+        "Muscle stimulation devices",
+        "Sports massage tools"
+      ],
+      "added_at": "2026-02-22T04:40:00.340562+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Viewing Accessories",
+      "category": "Home",
+      "description": "Products that enhance the sports watching experience at home. High search volume for game scores suggests active viewership seeking better viewing experiences.",
+      "demand_signals": "Searches for live scores indicate engaged sports viewers who invest in viewing experience",
+      "competition_level": "low",
+      "estimated_margin": "50-70%",
+      "target_audience": "Sports fans who watch games at home, man cave enthusiasts, sports bar owners",
+      "risk_factors": "Seasonal demand, limited repeat purchases",
+      "confidence": 7,
+      "sample_products": [
+        "Multi-game scoreboards",
+        "Sports-themed lighting",
+        "Team logo coasters",
+        "Stadium seat cushions",
+        "Sports trivia games"
+      ],
+      "added_at": "2026-02-22T04:40:00.340562+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Youth Sports Equipment",
+      "category": "Sports",
+      "description": "Equipment and accessories specifically designed for young athletes. College basketball trends suggest pipeline interest from youth to professional levels.",
+      "demand_signals": "College sports trending indicates youth participation and parental investment in sports equipment",
+      "competition_level": "medium",
+      "estimated_margin": "40-55%",
+      "target_audience": "Parents of young athletes, youth coaches, schools, recreational leagues",
+      "risk_factors": "Safety regulations, size variations, seasonal demand",
+      "confidence": 7,
+      "sample_products": [
+        "Youth training equipment",
+        "Adjustable basketball hoops",
+        "Safety padding",
+        "Skills training aids",
+        "Team organization accessories"
+      ],
+      "added_at": "2026-02-22T04:40:00.340562+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Team Fan Merchandise",
+      "category": "Sports",
+      "description": "Custom and trending sports team merchandise including apparel, accessories, and collectibles for popular teams and players. High search volume for specific players suggests strong fan engagement.",
+      "demand_signals": "Multiple trending searches for specific teams (Knicks, BYU) and players (Jabari Smith Jr., Scotty Pippen Jr.) indicate active fan interest",
+      "competition_level": "high",
+      "estimated_margin": "35-55%",
+      "target_audience": "Sports fans aged 18-45, particularly basketball and MLS followers",
+      "risk_factors": "Licensing issues, seasonal demand, team performance dependency",
+      "confidence": 6,
+      "sample_products": [
+        "Custom player jerseys",
+        "Team logo phone cases",
+        "Player bobbleheads",
+        "Team-branded water bottles",
+        "Fan cave wall art"
+      ],
+      "added_at": "2026-02-22T04:40:00.341493+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Recovery and Wellness Tools",
+      "category": "Health",
+      "description": "Recovery tools for active individuals engaged in high-intensity sports like MMA and basketball. Growing awareness of recovery importance in athletic performance.",
+      "demand_signals": "Sports activity trends indicate need for recovery, wellness market growth, injury prevention awareness",
+      "competition_level": "medium",
+      "estimated_margin": "50-75%",
+      "target_audience": "Athletes, fitness enthusiasts, people with active lifestyles, ages 20-55",
+      "risk_factors": "Health claims regulations, quality control important, potential returns for ineffective products",
+      "confidence": 8,
+      "sample_products": [
+        "Massage balls and rollers",
+        "Ice pack wraps",
+        "Compression sleeves",
+        "Essential oil roll-ons",
+        "Portable percussion massagers"
+      ],
+      "added_at": "2026-02-22T04:42:37.464684+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Fan Cave Decor",
+      "category": "Home",
+      "description": "Decorative items and memorabilia for sports fans to create themed spaces. Strong emotional purchasing drivers from sports fandom and team loyalty.",
+      "demand_signals": "Sports trending searches indicate active fanbase, home decor market growth, sports betting popularity",
+      "competition_level": "medium",
+      "estimated_margin": "50-70%",
+      "target_audience": "Sports fans 25-55, homeowners, gift buyers",
+      "risk_factors": "Licensing issues with official team logos, seasonal demand around playoffs, trend dependency",
+      "confidence": 7,
+      "sample_products": [
+        "LED sports team signs",
+        "Vintage sports posters",
+        "Team-colored lighting strips",
+        "Sports-themed wall clocks",
+        "Miniature arena replicas"
+      ],
+      "added_at": "2026-02-22T04:42:37.464684+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Portable Sports Equipment",
+      "category": "Sports",
+      "description": "Compact, portable versions of sports equipment for training anywhere. Appeals to active individuals who want to maintain training routines outside traditional gym settings.",
+      "demand_signals": "Sports engagement trends, home fitness market growth, convenience product demand",
+      "competition_level": "medium",
+      "estimated_margin": "45-65%",
+      "target_audience": "Athletes, busy professionals, travelers, students, ages 16-40",
+      "risk_factors": "Durability concerns with portable versions, shipping costs, seasonal demand variations",
+      "confidence": 7,
+      "sample_products": [
+        "Portable basketball hoops",
+        "Foldable agility cones",
+        "Resistance band sets",
+        "Compact jump ropes",
+        "Collapsible water bottles"
+      ],
+      "added_at": "2026-02-22T04:42:37.464684+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Fitness Tracking Accessories",
+      "category": "Tech",
+      "description": "Supplementary accessories for fitness enthusiasts who are actively engaged in sports and training. Complements the fitness journey indicated by sports interest trends.",
+      "demand_signals": "Athletic interest suggests fitness tracking needs, wearable tech growth, health consciousness trends",
+      "competition_level": "high",
+      "estimated_margin": "40-60%",
+      "target_audience": "Active individuals 20-50, fitness enthusiasts, athletes",
+      "risk_factors": "Fast-moving tech market, compatibility issues, quality control challenges",
+      "confidence": 6,
+      "sample_products": [
+        "Smartwatch charging stands",
+        "Fitness tracker bands",
+        "Heart rate monitor chest straps",
+        "Workout phone armbands",
+        "Bluetooth sports earbuds cases"
+      ],
+      "added_at": "2026-02-22T04:42:37.464684+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Home Sports Viewing Accessories",
+      "category": "Home",
+      "description": "Products that enhance the sports watching experience at home, capitalizing on sports entertainment trends.",
+      "demand_signals": "Multiple sports trending indicates high viewership and fan engagement",
+      "competition_level": "medium",
+      "estimated_margin": "50-75%",
+      "target_audience": "Sports fans, homeowners, party hosts, man cave enthusiasts",
+      "risk_factors": "Seasonal fluctuations, competition from major retailers",
+      "confidence": 6,
+      "sample_products": [
+        "LED sports scoreboard for home",
+        "Team-themed bottle openers",
+        "Sports game day snack serving trays",
+        "Portable stadium seats",
+        "Smart TV mounting brackets"
+      ],
+      "added_at": "2026-02-22T04:44:31.525319+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Sports Fan Merchandise",
+      "category": "Apparel",
+      "description": "Trendy fan gear and accessories for college basketball and emerging sports personalities. Capitalize on viral sports moments and rising stars.",
+      "demand_signals": "Specific player names and team searches trending, indicating strong fan engagement",
+      "competition_level": "high",
+      "estimated_margin": "45-70%",
+      "target_audience": "Sports fans, college students, gift buyers, collectors",
+      "risk_factors": "Licensing issues, trend volatility, inventory obsolescence",
+      "confidence": 5,
+      "sample_products": [
+        "Custom team jerseys",
+        "Player-inspired phone cases",
+        "Team logo LED signs",
+        "Sports trading card holders",
+        "Fan cave wall decals"
+      ],
+      "added_at": "2026-02-22T04:44:31.525319+00:00",
+      "status": "new"
+    },
+    {
+      "name": "MMA Training Accessories",
+      "category": "Fitness",
+      "description": "Home training equipment for MMA enthusiasts inspired by trending fighters like Khamzat Chimaev. Capitalize on the growing popularity of combat sports training.",
+      "demand_signals": "Khamzat Chimaev trending suggests MMA audience engagement, growing home fitness trend",
+      "competition_level": "medium",
+      "estimated_margin": "50-70%",
+      "target_audience": "MMA fans, home fitness enthusiasts, martial arts beginners, combat sports athletes",
+      "risk_factors": "Safety liability concerns, quality requirements for training equipment, niche market size",
+      "confidence": 7,
+      "sample_products": [
+        "Portable heavy bag stands",
+        "MMA training dummy/grappling dummy",
+        "Speed and agility training cones",
+        "Resistance bands for fight training",
+        "Floor mats for home training spaces"
+      ],
+      "added_at": "2026-02-22T04:46:33.310087+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Youth Sports Safety Gear",
+      "category": "Sports",
+      "description": "Safety equipment and protective gear for young athletes participating in basketball and other contact sports, targeting safety-conscious parents.",
+      "demand_signals": "College basketball trends suggest youth participation and parental interest in sports safety",
+      "competition_level": "medium",
+      "estimated_margin": "45-65%",
+      "target_audience": "Parents of young athletes, youth coaches, school athletic programs",
+      "risk_factors": "Safety compliance requirements, liability concerns, need for quality certifications",
+      "confidence": 7,
+      "sample_products": [
+        "Youth basketball knee pads",
+        "Mouth guards with cases",
+        "Compression sleeves for young athletes",
+        "Ankle support braces",
+        "Sports first aid kits for teams"
+      ],
+      "added_at": "2026-02-22T04:46:33.310087+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Home Sports Cave Accessories",
+      "category": "Home",
+      "description": "Decorative and functional items for creating the ultimate sports viewing experience at home. Products that enhance the fan cave or sports room atmosphere.",
+      "demand_signals": "Sports trending topics indicate engaged fan base likely to invest in home viewing setups",
+      "competition_level": "medium",
+      "estimated_margin": "40-60%",
+      "target_audience": "Sports enthusiasts with disposable income, homeowners, man cave creators, gift buyers",
+      "risk_factors": "Seasonal sports cycles, discretionary spending dependency, shipping costs for larger items",
+      "confidence": 6,
+      "sample_products": [
+        "LED sports scoreboard clocks",
+        "Mini desktop basketball hoops",
+        "Sports-themed bottle openers",
+        "Stadium seat cushions with cup holders",
+        "Magnetic sports schedule boards"
+      ],
+      "added_at": "2026-02-22T04:46:33.310087+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Athlete Recovery Tools",
+      "category": "Health",
+      "description": "Recovery and wellness products for amateur athletes inspired by professional sports trends.",
+      "demand_signals": "Interest in specific athletes suggests people following sports performance and training",
+      "competition_level": "medium",
+      "estimated_margin": "50-75%",
+      "target_audience": "Amateur athletes, fitness enthusiasts, weekend warriors aged 20-40",
+      "risk_factors": "Health claims regulations, quality expectations, customer education needed",
+      "confidence": 7,
+      "sample_products": [
+        "Muscle massage roller balls",
+        "Compression recovery sleeves",
+        "Portable ice bath alternatives",
+        "Percussion massage devices",
+        "Recovery foam rollers with guides"
+      ],
+      "added_at": "2026-02-22T04:48:40.270954+00:00",
+      "status": "new"
+    },
+    {
+      "name": "Portable Sports Streaming Setup",
+      "category": "Tech",
+      "description": "Mobile accessories for sports fans who want to watch games anywhere, capitalizing on interest in multiple sports leagues.",
+      "demand_signals": "Multiple sports trending (basketball, MLS) suggests people actively following sports content",
+      "competition_level": "medium",
+      "estimated_margin": "45-65%",
+      "target_audience": "Sports fans aged 25-50, tailgaters, cord-cutters",
+      "risk_factors": "Rapid tech changes, battery life expectations, streaming service compatibility",
+      "confidence": 6,
+      "sample_products": [
+        "Portable phone projectors for sports",
+        "Magnetic phone mounts for cars",
+        "Power banks with wireless charging",
+        "Bluetooth sports commentary headphones",
+        "Tablet stands for outdoor viewing"
+      ],
+      "added_at": "2026-02-22T04:48:40.270954+00:00",
+      "status": "new"
+    }
+  ]
+}
